@@ -216,7 +216,7 @@ body.on-glove  .bg-panel-raw   .bg-img { filter: brightness(.12) saturate(.3); }
 
 /* ── 플래시 ── */
 .flash { position:fixed;inset:0;background:#06080a;z-index:9999;opacity:0;pointer-events:none;transition:opacity .25s; }
-.flash.on { opacity:1;pointer-events:all; }
+.flash.on { opacity:1; }
 
 /* ── 반응형 ── */
 @media (max-width: 768px) {
@@ -331,6 +331,9 @@ document.addEventListener('mousemove', e => {
 })();
 
 function goTo(type) {
+  window.addEventListener('pageshow', (e) => {
+  if(e.persisted) document.getElementById('flash').classList.remove('on');
+});
   const flash = document.getElementById('flash');
   flash.classList.add('on');
   setTimeout(() => {
