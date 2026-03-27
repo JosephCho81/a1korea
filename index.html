@@ -60,7 +60,7 @@ body.on-glove  .bg-panel-raw   .bg-img { filter: brightness(.12) saturate(.3); }
   pointer-events: none;
 }
 
-/* ── 전체 오버레이 (그라데이션) ── */
+/* ── 전체 오버레이 ── */
 .overlay {
   position: fixed; inset: 0; z-index: 2;
   background:
@@ -185,6 +185,33 @@ body.on-glove  .bg-panel-raw   .bg-img { filter: brightness(.12) saturate(.3); }
 .choice-glove .ch-cta { color: #60a5fa; }
 .ch-cta::after { content: '→'; }
 
+/* ── 뉴스 링크 ── */
+.ch-divider { height: 1px; background: rgba(255,255,255,.08); margin: 16px 0 14px; }
+.ch-news {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.04);
+  text-decoration: none;
+  transition: all .2s;
+  pointer-events: all;
+}
+.choice-raw   .ch-news:hover { border-color: rgba(43,140,60,.6); background: rgba(43,140,60,.12); }
+.choice-glove .ch-news:hover { border-color: rgba(99,160,250,.5); background: rgba(59,130,246,.1); }
+.ch-news-left { display: flex; align-items: center; gap: 8px; }
+.ch-news-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+  animation: pulse 1.6s infinite;
+}
+.choice-raw   .ch-news-dot { background: #4ade80; }
+.choice-glove .ch-news-dot { background: #60a5fa; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.25} }
+.ch-news-label { font-size: 11px; font-weight: 700; letter-spacing: .06em; }
+.choice-raw   .ch-news-label { color: #4ade80; }
+.choice-glove .ch-news-label { color: #60a5fa; }
+.ch-news-url { font-size: 9.5px; color: rgba(255,255,255,.25); margin-top: 2px; }
+.ch-news-arrow { font-size: 13px; color: rgba(255,255,255,.3); }
+
 /* 선택 시 스캔라인 애니메이션 */
 .choice::before {
   content: ''; position: absolute;
@@ -206,7 +233,7 @@ body.on-glove  .bg-panel-raw   .bg-img { filter: brightness(.12) saturate(.3); }
   color: rgba(255,255,255,.18);
 }
 
-/* ── 좌우 호버 영역 (전체 패널) ── */
+/* ── 좌우 호버 영역 ── */
 .hover-zone {
   position: fixed; top: 0; bottom: 0;
   width: calc(50% - 140px); z-index: 8;
@@ -289,6 +316,17 @@ body.on-glove  .bg-panel-raw   .bg-img { filter: brightness(.12) saturate(.3); }
       <div class="ch-title">원자재 사업부</div>
       <div class="ch-sub">페로합금 · 철강 원료 · 비철금속<br>제강사 · 주조사 공급 전문</div>
       <div class="ch-cta">사이트 입장</div>
+      <div class="ch-divider"></div>
+      <a class="ch-news" href="https://news.a1kor.com" target="_blank" onclick="event.stopPropagation();">
+        <div class="ch-news-left">
+          <span class="ch-news-dot"></span>
+          <div>
+            <div class="ch-news-label">오늘의 원자재 뉴스</div>
+            <div class="ch-news-url">news.a1kor.com</div>
+          </div>
+        </div>
+        <span class="ch-news-arrow">↗</span>
+      </a>
     </div>
 
     <!-- 글러브 -->
@@ -303,6 +341,17 @@ body.on-glove  .bg-panel-raw   .bg-img { filter: brightness(.12) saturate(.3); }
       <div class="ch-title">소모품 사업부</div>
       <div class="ch-sub">니트릴 · 라텍스 장갑<br>산업용 · 의료용 소모품 공급</div>
       <div class="ch-cta">사이트 입장</div>
+      <div class="ch-divider"></div>
+      <a class="ch-news" href="https://market.a1kor.com" target="_blank" onclick="event.stopPropagation();">
+        <div class="ch-news-left">
+          <span class="ch-news-dot"></span>
+          <div>
+            <div class="ch-news-label">오늘의 장갑 뉴스</div>
+            <div class="ch-news-url">market.a1kor.com</div>
+          </div>
+        </div>
+        <span class="ch-news-arrow">↗</span>
+      </a>
     </div>
   </div>
 </div>
