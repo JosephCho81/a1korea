@@ -768,8 +768,11 @@ footer { background: var(--bg-darker); padding: 44px 0; border-top: 1px solid rg
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 (function(){
-  var map = L.map('leaflet-map', {
-    center: [30, 60], zoom: 2, scrollWheelZoom: false
+var map = L.map('leaflet-map', {
+    center: [30, 60], zoom: 2, scrollWheelZoom: false,
+    maxBoundsViscosity: 1.0,
+    worldCopyJump: false,
+    maxBounds: [[-90,-180],[90,180]]
   });
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
