@@ -797,14 +797,14 @@ var map = L.map('leaflet-map', {
     {name:'중국',   lat:35.0, lng:105.0},
     {name:'러시아', lat:60.0, lng: 90.0},
     {name:'중동',   lat:25.0, lng: 45.0},
-    {name:'미국',   lat:42.0, lng:-100.0},
+    {name:'미국',   lat:47.0, lng:-100.0},
     {name:'유럽',   lat:52.0, lng: 15.0},
     {name:'일본',   lat:36.5, lng:145.0}
   ];
 
   suppliers.forEach(function(s){
     L.marker([s.lat,s.lng],{icon:supplyIcon}).addTo(map)
-      .bindTooltip(s.name,{permanent:true,direction:'top',offset:[0,-10],className:'map-lbl'});
+      .bindTooltip(s.name,{permanent:true,direction: s.name==='일본' ? 'right' : 'top',offset: s.name==='일본' ? [10,0] : [0,-10],className:'map-lbl'});
     L.polyline([[s.lat,s.lng],[37.5,127.0]],{
       color:'#2B8C3C',
       weight: s.name==='중국'||s.name==='러시아' ? 2.2 : 1.5,
