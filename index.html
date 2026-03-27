@@ -4,195 +4,339 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>㈜한국에이원</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  font-family: 'Noto Sans KR', sans-serif;
-}
+html, body { width: 100%; height: 100%; overflow: hidden; background: #06080a; cursor: none; }
 
-/* 전체 레이아웃 */
-.stage {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+/* ── 커서 ── */
+.cursor {
+  position: fixed; width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,.9);
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: transform .1s, width .3s, height .3s, background .3s;
+  mix-blend-mode: difference;
 }
-
-/* 패널 */
-.panel {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
+.cursor-ring {
+  position: fixed; width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.3);
+  pointer-events: none; z-index: 9997;
+  transform: translate(-50%,-50%);
+  transition: transform .18s cubic-bezier(.25,.46,.45,.94),
+              width .4s, height .4s, border-color .3s;
 }
+body.on-raw    .cursor-ring { width: 56px; height: 56px; border-color: rgba(43,140,60,.8); }
+body.on-glove  .cursor-ring { width: 56px; height: 56px; border-color: rgba(99,160,250,.8); }
 
-/* 배경 */
-.panel-bg {
-  position: absolute;
-  inset: -5%;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.8s ease, filter 0.5s ease;
-  filter: brightness(.45);
+/* ── 배경 전체 ── */
+.bg-wrap {
+  position: fixed; inset: 0;
+  display: grid; grid-template-columns: 1fr 1fr;
+  z-index: 0;
 }
-
-.panel:hover .panel-bg {
-  transform: scale(1.05);
-  filter: brightness(.3);
+.bg-panel { position: relative; overflow: hidden; }
+.bg-img {
+  position: absolute; inset: -6%;
+  background-size: cover; background-position: center;
+  transition: filter 1.2s ease, transform 1.2s cubic-bezier(.25,.46,.45,.94);
+  filter: brightness(.22) saturate(.5);
 }
-
-.panel-raw .panel-bg {
+.bg-panel-raw .bg-img {
   background-image: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1400&q=85');
 }
+.bg-panel-glove .bg-img {
+  background-image: url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1400&q=85');
+}
+body.on-raw    .bg-panel-raw   .bg-img { filter: brightness(.38) saturate(.7); transform: scale(1.04); }
+body.on-raw    .bg-panel-glove .bg-img { filter: brightness(.12) saturate(.3); }
+body.on-glove  .bg-panel-glove .bg-img { filter: brightness(.38) saturate(.7); transform: scale(1.04); }
+body.on-glove  .bg-panel-raw   .bg-img { filter: brightness(.12) saturate(.3); }
 
-.panel-glove .panel-bg {
-  background-image: url('https://images.unsplash.com/photo-1576671081837-49000212a370?w=1400&q=85');
+/* ── 세로선 ── */
+.vline {
+  position: fixed; left: 50%; top: 0; bottom: 0;
+  width: 1px; background: rgba(255,255,255,.08); z-index: 5;
+  pointer-events: none;
 }
 
-/* 콘텐츠 */
-.panel-content {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 52px;
-  z-index: 5;
+/* ── 전체 오버레이 (그라데이션) ── */
+.overlay {
+  position: fixed; inset: 0; z-index: 2;
+  background:
+    linear-gradient(to bottom,
+      rgba(6,8,10,.9) 0%,
+      rgba(6,8,10,.0) 18%,
+      rgba(6,8,10,.0) 72%,
+      rgba(6,8,10,.85) 100%
+    );
+  pointer-events: none;
 }
 
-/* 텍스트 */
-.p-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(48px, 6vw, 84px);
-  color: #fff;
-  line-height: 1;
+/* ── 메인 컨텐츠 ── */
+.main {
+  position: fixed; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 10; text-align: center;
+  pointer-events: none;
 }
 
-.p-title span {
-  display: block;
-  -webkit-text-stroke: 1.5px rgba(255,255,255,.25);
-  color: transparent;
+/* 상단 브랜드 */
+.brand {
+  margin-bottom: 52px;
+  opacity: 0; animation: fadein .9s ease .3s forwards;
+}
+@keyframes fadein { to { opacity: 1; } }
+.brand-ko {
+  font-size: 13px; font-weight: 700; color: rgba(255,255,255,.7);
+  letter-spacing: .04em; margin-bottom: 6px;
+}
+.brand-line { width: 40px; height: 1px; background: rgba(255,255,255,.2); margin: 0 auto 6px; }
+.brand-en {
+  font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+  color: rgba(255,255,255,.25);
 }
 
-.panel-raw:hover .p-title span { color: #2B8C3C; }
-.panel-glove:hover .p-title span { color: #3b82f6; }
-
-.p-sub {
-  font-size: 13px;
-  color: rgba(255,255,255,.6);
-  margin-top: 10px;
+/* 중앙 타이틀 */
+.center-q {
+  opacity: 0; animation: fadein .9s ease .55s forwards;
+  margin-bottom: 16px;
+}
+.cq-serif {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(15px, 2vw, 22px);
+  color: rgba(255,255,255,.38);
+  letter-spacing: .06em;
+  margin-bottom: 10px;
+}
+.cq-main {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(32px, 4.5vw, 54px);
+  font-weight: 700; color: #fff;
+  line-height: 1.25;
+  letter-spacing: -.02em;
 }
 
-/* 버튼 */
-.p-btns {
-  margin-top: 20px;
+/* 구분 텍스트 */
+.divider-txt {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 48px;
+  opacity: 0; animation: fadein .8s ease .75s forwards;
+}
+.dt-line { flex: 1; height: 1px; background: rgba(255,255,255,.1); }
+.dt-txt {
+  font-size: 10px; letter-spacing: .24em; text-transform: uppercase;
+  color: rgba(255,255,255,.22);
+  white-space: nowrap;
 }
 
-.btn-news {
-  display: inline-block;
-  font-size: 12px;
-  padding: 8px 12px;
-  border: 1px solid rgba(255,255,255,.3);
-  text-decoration: none;
-  color: #fff;
-  background: rgba(0,0,0,0.2);
+/* 선택지 버튼 행 */
+.choices {
+  display: flex; gap: 20px;
+  pointer-events: all;
+  opacity: 0; animation: fadein .9s ease 1s forwards;
 }
 
-.btn-news:hover {
-  background: rgba(255,255,255,0.1);
+.choice {
+  position: relative; overflow: hidden;
+  width: 220px; cursor: none;
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.03);
+  backdrop-filter: blur(12px);
+  padding: 28px 24px 24px;
+  text-align: left;
+  transition: border-color .4s, background .4s, transform .4s;
+}
+.choice:hover { transform: translateY(-4px); }
+.choice-raw:hover   { border-color: rgba(43,140,60,.5); background: rgba(43,140,60,.08); }
+.choice-glove:hover { border-color: rgba(99,160,250,.45); background: rgba(59,130,246,.07); }
+
+/* 선택지 내부 */
+.ch-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px; color: rgba(255,255,255,.2);
+  letter-spacing: .3em; margin-bottom: 16px;
+}
+.ch-icon {
+  width: 36px; height: 36px; margin-bottom: 14px;
+  opacity: .6; transition: opacity .3s;
+}
+.choice:hover .ch-icon { opacity: 1; }
+.ch-title {
+  font-size: 17px; font-weight: 700; color: #fff;
+  letter-spacing: -.01em; margin-bottom: 6px;
+  line-height: 1.2;
+}
+.ch-sub {
+  font-size: 11.5px; color: rgba(255,255,255,.38);
+  line-height: 1.6; margin-bottom: 20px;
+}
+.ch-cta {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: 0; transform: translateY(5px);
+  transition: opacity .3s, transform .3s;
+}
+.choice:hover .ch-cta { opacity: 1; transform: translateY(0); }
+.choice-raw   .ch-cta { color: #4ade80; }
+.choice-glove .ch-cta { color: #60a5fa; }
+.ch-cta::after { content: '→'; }
+
+/* 선택 시 스캔라인 애니메이션 */
+.choice::before {
+  content: ''; position: absolute;
+  left: 0; top: -100%; width: 100%; height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,.05), transparent);
+  transition: top .4s ease;
+}
+.choice:hover::before { top: 100%; }
+
+/* ── 하단 ── */
+.footer-hint {
+  position: fixed; bottom: 32px; left: 0; right: 0;
+  text-align: center; z-index: 10;
+  pointer-events: none;
+  opacity: 0; animation: fadein .8s ease 1.4s forwards;
+}
+.fh-txt {
+  font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(255,255,255,.18);
 }
 
-/* 헤더 */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 28px 48px;
-  display: flex;
-  justify-content: space-between;
-  z-index: 20;
+/* ── 좌우 호버 영역 (전체 패널) ── */
+.hover-zone {
+  position: fixed; top: 0; bottom: 0;
+  width: calc(50% - 140px); z-index: 8;
 }
+.hz-left  { left: 0; }
+.hz-right { right: 0; }
 
-.header-logo-t {
-  color: #fff;
-  font-weight: 700;
-}
+/* ── 플래시 ── */
+.flash { position:fixed;inset:0;background:#06080a;z-index:9999;opacity:0;pointer-events:none;transition:opacity .25s; }
+.flash.on { opacity:1;pointer-events:all; }
 
-.header-sub {
-  color: rgba(255,255,255,.5);
-}
-
-/* 모바일 */
+/* ── 반응형 ── */
 @media (max-width: 768px) {
-  .stage {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
-  .panel-content {
-    padding: 28px;
-  }
+  html, body { cursor: auto; overflow-y: auto; height: auto; }
+  .cursor, .cursor-ring { display: none; }
+  .bg-wrap { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+  .vline { left: 0; right: 0; top: 50%; width: 100%; height: 1px; }
+  .choices { flex-direction: column; align-items: center; gap: 14px; padding: 0 24px; }
+  .choice { width: 100%; max-width: 340px; }
+  .ch-cta { opacity: 1; transform: none; }
+  .brand { margin-bottom: 32px; }
+  .cq-main { font-size: clamp(24px, 7vw, 36px); }
+  .main { padding: 20px; justify-content: center; }
+  body.on-raw .bg-panel-raw .bg-img,
+  body.on-glove .bg-panel-glove .bg-img { filter: brightness(.3) saturate(.6); transform: none; }
 }
 </style>
 </head>
-
 <body>
 
-<header class="header">
-  <div class="header-logo-t">㈜한국에이원</div>
-  <div class="header-sub">사업 부문 선택</div>
-</header>
+<div class="flash" id="flash"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cring"></div>
 
-<div class="stage">
+<!-- 배경 -->
+<div class="bg-wrap">
+  <div class="bg-panel bg-panel-raw"><div class="bg-img"></div></div>
+  <div class="bg-panel bg-panel-glove"><div class="bg-img"></div></div>
+</div>
+<div class="vline"></div>
+<div class="overlay"></div>
 
-  <!-- 원자재 -->
-  <div class="panel panel-raw"
-       onclick="location.href='https://a1korea.vercel.app/main'">
-    <div class="panel-bg"></div>
-    <div class="panel-content">
-      <h2 class="p-title">
-        글로벌<br>원자재<br><span>공급사</span>
-      </h2>
-      <p class="p-sub">페로합금 · 철강 원료 · 비철금속</p>
+<!-- 호버 인식 영역 -->
+<div class="hover-zone hz-left"
+     onmouseenter="document.body.classList.add('on-raw');document.body.classList.remove('on-glove')"
+     onmouseleave="document.body.classList.remove('on-raw','on-glove')"></div>
+<div class="hover-zone hz-right"
+     onmouseenter="document.body.classList.add('on-glove');document.body.classList.remove('on-raw')"
+     onmouseleave="document.body.classList.remove('on-raw','on-glove')"></div>
 
-      <div class="p-btns">
-        <a class="btn-news"
-           href="https://news.a1kor.com"
-           target="_blank"
-           onclick="event.stopPropagation();">
-          원자재 뉴스
-        </a>
-      </div>
-    </div>
+<!-- 메인 컨텐츠 -->
+<div class="main">
+  <div class="brand">
+    <div class="brand-ko">㈜한국에이원</div>
+    <div class="brand-line"></div>
+    <div class="brand-en">A1KOR Co., Ltd.</div>
   </div>
 
-  <!-- 글러브 -->
-  <div class="panel panel-glove"
-       onclick="window.open('https://seshohoho.cafe24.com', '_blank')">
-    <div class="panel-bg"></div>
-    <div class="panel-content">
-      <h2 class="p-title">
-        글로벌<br>소모품<br><span>공급사</span>
-      </h2>
-      <p class="p-sub">산업용 · 의료용 소모품</p>
-
-      <div class="p-btns">
-        <a class="btn-news"
-           href="https://market.a1kor.com"
-           target="_blank"
-           onclick="event.stopPropagation();">
-          글러브 뉴스
-        </a>
-      </div>
-    </div>
+  <div class="center-q">
+    <div class="cq-serif">어떤 사업부를 방문하시겠습니까?</div>
+    <div class="cq-main">사업 부문 선택</div>
   </div>
 
+  <div class="divider-txt" style="width:460px;max-width:90vw;">
+    <div class="dt-line"></div>
+    <div class="dt-txt">Select your division</div>
+    <div class="dt-line"></div>
+  </div>
+
+  <div class="choices">
+    <!-- 원자재 -->
+    <div class="choice choice-raw"
+         onmouseenter="document.body.classList.add('on-raw');document.body.classList.remove('on-glove')"
+         onmouseleave="document.body.classList.remove('on-raw','on-glove')"
+         onclick="goTo('raw')">
+      <div class="ch-num">01</div>
+      <svg class="ch-icon" viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.4">
+        <rect x="2" y="22" width="6" height="12"/><rect x="15" y="14" width="6" height="20"/><rect x="28" y="7" width="6" height="27"/>
+      </svg>
+      <div class="ch-title">원자재 사업부</div>
+      <div class="ch-sub">페로합금 · 철강 원료 · 비철금속<br>제강사 · 주조사 공급 전문</div>
+      <div class="ch-cta">사이트 입장</div>
+    </div>
+
+    <!-- 글러브 -->
+    <div class="choice choice-glove"
+         onmouseenter="document.body.classList.add('on-glove');document.body.classList.remove('on-raw')"
+         onmouseleave="document.body.classList.remove('on-raw','on-glove')"
+         onclick="goTo('glove')">
+      <div class="ch-num">02</div>
+      <svg class="ch-icon" viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.4">
+        <path d="M10 28V14a2 2 0 014 0v6M14 14V10a2 2 0 014 0v10M18 12V10a2 2 0 014 0v10M22 14a2 2 0 014 0v6c0 5-2 8-8 8s-8-3-8-8v-2"/>
+      </svg>
+      <div class="ch-title">소모품 사업부</div>
+      <div class="ch-sub">니트릴 · 라텍스 장갑<br>산업용 · 의료용 소모품 공급</div>
+      <div class="ch-cta">사이트 입장</div>
+    </div>
+  </div>
 </div>
 
+<!-- 하단 힌트 -->
+<div class="footer-hint">
+  <div class="fh-txt">㈜한국에이원 — 원자재 · 소모품 전문 공급사</div>
+</div>
+
+<script>
+// 커스텀 커서
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cring');
+let rx = 0, ry = 0, cx = 0, cy = 0;
+document.addEventListener('mousemove', e => {
+  cx = e.clientX; cy = e.clientY;
+  cur.style.left = cx + 'px';
+  cur.style.top  = cy + 'px';
+});
+(function animRing() {
+  rx += (cx - rx) * .14;
+  ry += (cy - ry) * .14;
+  ring.style.left = rx + 'px';
+  ring.style.top  = ry + 'px';
+  requestAnimationFrame(animRing);
+})();
+
+function goTo(type) {
+  const flash = document.getElementById('flash');
+  flash.classList.add('on');
+  setTimeout(() => {
+    window.location.href = type === 'raw' ? 'https://a1korea.vercel.app/main' : 'https://seshohoho.cafe24.com';
+  }, 380);
+}
+</script>
 </body>
 </html>
