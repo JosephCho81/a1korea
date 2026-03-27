@@ -313,7 +313,6 @@ body.on-glove  .bg-panel-raw   .bg-img { filter: brightness(.12) saturate(.3); }
 </div>
 
 <script>
-// 커스텀 커서
 const cur = document.getElementById('cursor');
 const ring = document.getElementById('cring');
 let rx = 0, ry = 0, cx = 0, cy = 0;
@@ -330,17 +329,16 @@ document.addEventListener('mousemove', e => {
   requestAnimationFrame(animRing);
 })();
 
-function goTo(type) {
-  window.addEventListener('pageshow', (e) => {
+window.addEventListener('pageshow', (e) => {
   if(e.persisted) document.getElementById('flash').classList.remove('on');
 });
+
+function goTo(type) {
   const flash = document.getElementById('flash');
   flash.classList.add('on');
   setTimeout(() => {
     window.location.href = type === 'raw' ? 'https://a1korea.vercel.app/main' : 'https://seshohoho.cafe24.com';
   }, 380);
-}
-
 }
 </script>
 </body>
