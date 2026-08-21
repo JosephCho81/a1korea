@@ -181,26 +181,6 @@ nav { position: sticky; top: 0; z-index: 200; background: #fff; border-bottom: 2
 .rrole { font-size: 10.5px; color: var(--green); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-top: 1px; }
 .rgoods { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.55; }
 
-/* ── INSIGHT ── */
-.insight-hd { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; }
-.see-all { font-size: 13px; color: var(--green); font-weight: 700; cursor: pointer; text-decoration: none; }
-.see-all:hover { text-decoration: underline; }
-.ig { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1px; background: var(--border); }
-.ic { background: #fff; padding: 30px 28px; cursor: pointer; border-top: 3px solid transparent; transition: border-color .2s, box-shadow .2s; }
-.ic:hover { border-top-color: var(--green); box-shadow: 0 4px 20px rgba(0,0,0,.07); }
-.ic-date { font-size: 11px; color: var(--light); letter-spacing: .08em; margin-bottom: 9px; }
-.ic-badge { display: inline-block; background: var(--green); color: #fff; font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; padding: 2px 9px; margin-bottom: 10px; font-weight: 700; }
-.ic-ttl { font-weight: 700; font-size: 17px; line-height: 1.3; color: var(--charcoal); margin-bottom: 10px; transition: color .2s; letter-spacing: -.01em; }
-.ic:hover .ic-ttl { color: var(--green); }
-.ic-txt { font-size: 13px; color: var(--muted); line-height: 1.78; }
-.ic.feat .ic-ttl { font-size: 21px; }
-.ic-price { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border-lt); display: flex; gap: 16px; flex-wrap: wrap; }
-.ic-pitem { }
-.ic-plbl { font-size: 10px; color: var(--light); letter-spacing: .1em; text-transform: uppercase; }
-.ic-pval { font-family: var(--cond); font-size: 17px; font-weight: 700; color: var(--charcoal); }
-.ic-pval.up { color: #c0392b; }
-.ic-pval.dn { color: var(--green); }
-
 /* ── DARK CONTACT BANNER ── */
 .cbanner { background: var(--bg-dark); padding: 72px 0; }
 .cbanner-in { max-width: 1300px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -245,18 +225,6 @@ footer { background: var(--bg-darker); padding: 44px 0; border-top: 1px solid rg
 .spec-tb td:last-child { font-weight: 600; color: var(--mid); }
 .app-tags { display: flex; flex-wrap: wrap; gap: 7px; }
 .app-tag { font-size: 11.5px; border: 1px solid var(--border); padding: 4px 12px; color: var(--mid); background: var(--bg-grey); }
-
-/* ── NEWS ── */
-.news-cats { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; }
-.nc { font-size: 12.5px; border: 1px solid var(--border); background: #fff; padding: 7px 16px; color: var(--mid); cursor: pointer; transition: all .2s; font-family: var(--sans); font-weight: 500; }
-.nc:hover, .nc.on { background: var(--green); border-color: var(--green); color: #fff; }
-.nrow { display: flex; gap: 28px; padding: 26px 0; border-bottom: 1px solid var(--border-lt); }
-.nrow:hover .n-ttl { color: var(--green); }
-.n-meta { width: 130px; flex-shrink: 0; }
-.n-date { font-size: 11px; color: var(--light); letter-spacing: .08em; margin-bottom: 8px; }
-.n-badge { display: inline-block; background: var(--green); color: #fff; font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 2px 8px; }
-.n-ttl { font-weight: 700; font-size: 17.5px; margin-bottom: 6px; transition: color .2s; line-height: 1.3; letter-spacing: -.01em; }
-.n-txt { font-size: 13.5px; color: var(--muted); line-height: 1.78; }
 
 /* ── ABOUT SECTIONS ── */
 .about-hero { padding: 72px 0 60px; border-bottom: 1px solid var(--border); }
@@ -309,8 +277,6 @@ footer { background: var(--bg-darker); padding: 44px 0; border-top: 1px solid rg
   .hero-in{padding:60px 24px;}
   .pillars{grid-template-columns:1fr 1fr;}
   .pg{grid-template-columns:1fr 1fr;}
-  .ig{grid-template-columns:1fr 1fr;}
-  .ig .ic.feat{grid-column:1/-1;}
   .cred-g{grid-template-columns:1fr 1fr;}
   .trade-g,.cap-wrap,.net-wrap,.biz-g,.cbanner-in,.cp-g{grid-template-columns:1fr;gap:36px;}
   .trade-modes{grid-template-columns:1fr 1fr;}
@@ -413,10 +379,6 @@ footer { background: var(--bg-darker); padding: 44px 0; border-top: 1px solid rg
   .cp-box,.iq-g{padding:24px 20px;}
   .rrow{padding:14px 16px;}
 
-  /* 인사이트 카드 */
-  .ic{padding:22px 18px;}
-  .ic.feat .ic-ttl{font-size:17px;}
-  .ic-price{gap:10px;}
 }
 
 /* ── RESPONSIVE: 소형 모바일 ── */
@@ -473,7 +435,9 @@ footer { background: var(--bg-darker); padding: 44px 0; border-top: 1px solid rg
     <div class="topbar-r">
       <a href="mailto:a1@a1kor.com">a1@a1kor.com</a>
       <span>|</span>
-      <a href="#" onclick="go('news');return false;">시장 인사이트</a>
+      <a href="https://www.a1kor.com">사업부 허브</a>
+      <span>|</span>
+      <a href="https://glove.a1kor.com">소모품 사업부</a>
 
     </div>
   </div>
@@ -494,7 +458,6 @@ footer { background: var(--bg-darker); padding: 44px 0; border-top: 1px solid rg
       <li><span id="n-about" onclick="go('about')">회사 소개</span></li>
       <li><span id="n-products" onclick="go('products')">취급 품목</span></li>
       <li><span id="n-trading" onclick="go('trading')">거래 역량</span></li>
-      <li><span id="n-news" onclick="go('news')">시장 인사이트</span></li>
     </ul>
     <button class="ham-btn" id="hambtn" onclick="toggleMM()" aria-label="메뉴 열기">
       <span></span><span></span><span></span>
@@ -505,7 +468,7 @@ footer { background: var(--bg-darker); padding: 44px 0; border-top: 1px solid rg
     <div class="mm-item" onclick="go('about');closeMM()">회사 소개</div>
     <div class="mm-item" onclick="go('products');closeMM()">취급 품목</div>
     <div class="mm-item" onclick="go('trading');closeMM()">거래 역량</div>
-    <div class="mm-item" onclick="go('news');closeMM()">시장 인사이트</div>
+    <div class="mm-item" onclick="location.href='https://www.a1kor.com'">사업부 허브 ↗</div>
   </div>
 </nav>
 
@@ -832,45 +795,6 @@ var map = L.map('leaflet-map', {
     </div>
 </section>
 
-<!-- 시장 인사이트 미리보기 -->
-<section class="sec sec-off">
-  <div class="sec-in">
-    <div class="insight-hd">
-      <div><div class="kicker">시장 정보</div><h2 class="sh">시장 인사이트</h2></div>
-      <a class="see-all" onclick="go('news');return false;">전체 보고서 →</a>
-    </div>
-    <div class="ig">
-      <div class="ic feat" onclick="go('news');return false;">
-        <div class="ic-date">2026년 3월 · 주간 브리프</div>
-        <div class="ic-badge">페로실리콘</div>
-        <div class="ic-ttl">중국 FeSi, 전력 제한으로 수출 물량 감소 — 한국 CFR 가격 상승 압력</div>
-        <div class="ic-txt">칭하이·닝샤 제련소 가동률이 계절적 수준 이하 유지. 75# 그레이드 한국 CFR 오퍼: $1,050–1,080/mt. 4월 선적분 선제 구매 검토 시기.</div>
-        <div class="ic-price">
-          <div class="ic-pitem"><div class="ic-plbl">FeSi 75# CFR Korea</div><div class="ic-pval">$1,065/mt</div></div>
-          <div class="ic-pitem"><div class="ic-plbl">전월 대비</div><div class="ic-pval up">+$28</div></div>
-        </div>
-      </div>
-      <div class="ic" onclick="go('news');return false;">
-        <div class="ic-date">2026년 3월</div>
-        <div class="ic-badge">SiMn</div>
-        <div class="ic-ttl">인도산 SiMn, 재고 소진 후 현물 유동성 회복</div>
-        <div class="ic-txt">안드라프라데시 주 65/16 그레이드 재고 감소. 인도 생산자 Q2 가격 인상 요구. 국내 제강사 현물 수요 재개 조짐.</div>
-        <div class="ic-price">
-          <div class="ic-pitem"><div class="ic-plbl">SiMn 65/16 CFR Korea</div><div class="ic-pval">$920/mt</div></div>
-        </div>
-      </div>
-      <div class="ic" onclick="go('news');return false;">
-        <div class="ic-date">2026년 3월</div>
-        <div class="ic-badge">FeCr</div>
-        <div class="ic-ttl">LC FeCr 벤치마크 확정 — Q2 계약 기준가 설정</div>
-        <div class="ic-txt">리처즈베이 항 혼잡으로 CFR 비용 톤당 $15–20 추가. 중국 크로마이트 재고 3년 최저. 스테인리스사 재고 보충 Q2 집중 예상.</div>
-        <div class="ic-price">
-          <div class="ic-pitem"><div class="ic-plbl">HC FeCr CFR Korea</div><div class="ic-pval">$1,140/mt</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- 문의 배너 -->
 <div class="cbanner">
@@ -1036,37 +960,6 @@ var map = L.map('leaflet-map', {
   </section>
 </div>
 
-<!-- ════ NEWS ════ -->
-<div id="pv-news" class="pv">
-  <section class="sec">
-    <div class="sec-in">
-      <div class="kicker">시장 인사이트</div>
-      <h1 class="sh" style="font-size:clamp(30px,4vw,50px);margin-bottom:10px;">정보가 곧 경쟁력입니다.</h1>
-      <p class="slead">탈산제·가탄제·페로실리콘·알루미늄 소재 시장의 가격 동향과 수급 분석.</p>
-      <div style="margin-top:24px;margin-bottom:36px;">
-        <a href="https://news.a1kor.com" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;padding:13px 24px;font-size:13.5px;font-weight:700;text-decoration:none;letter-spacing:.02em;">
-          원자재 시장 뉴스 보기 → news.a1kor.com
-        </a>
-      </div>
-      <div class="news-cats" style="margin-top:36px;">
-        <button class="nc on" onclick="fn('all',this)">전체</button>
-        <button class="nc" onclick="fn('deox',this)">탈산제</button>
-        <button class="nc" onclick="fn('recarb',this)">가탄제</button>
-        <button class="nc" onclick="fn('fesi',this)">페로실리콘</button>
-        <button class="nc" onclick="fn('al',this)">알루미늄</button>
-        <button class="nc" onclick="fn('steel',this)">철강</button>
-      </div>
-      <div id="nlist">
-        <div class="nrow" data-c="fesi"><div class="n-meta"><div class="n-date">2026.03.19</div><span class="n-badge">페로실리콘</span></div><div><div class="n-ttl">중국 FeSi, 전력 제한 지속 — 한국 수입가 상승 압력</div><div class="n-txt">칭하이·닝샤 제련소 가동률이 계절 수준 이하 유지. Fe-Si 75# 그레이드 한국 CFR 오퍼 $1,050–1,080/mt. 4월 선적분 조기 구매 검토 권고.</div></div></div>
-        <div class="nrow" data-c="deox"><div class="n-meta"><div class="n-date">2026.03.15</div><span class="n-badge">탈산제</span></div><div><div class="n-ttl">알루미늄 드로스 가격 상승 — 일반 탈산제 원가 압력</div><div class="n-txt">국내 알루미늄 드로스 수급 타이트. Al 25~65 일반 탈산제 생산원가 상승. 제강사 2분기 입찰가 협상 변수로 작용 예상.</div></div></div>
-        <div class="nrow" data-c="recarb"><div class="n-meta"><div class="n-date">2026.03.12</div><span class="n-badge">가탄제</span></div><div><div class="n-ttl">중국 무연탄 수출 물량 증가 — 가탄제 가격 하락 압력</div><div class="n-txt">내몽고·닝샤 무연탄 생산 회복. 소괴탄·LF가탄제 중국 FOB 오퍼 소폭 하락. 국내 제강사 2분기 가탄제 입찰 시기 조율 중.</div></div></div>
-        <div class="nrow" data-c="al"><div class="n-meta"><div class="n-date">2026.03.08</div><span class="n-badge">알루미늄 스크랩</span></div><div><div class="n-ttl">LME 알루미늄 강세 — 스크랩 매입가 동반 상승</div><div class="n-txt">LME Al 현물 $2,450/mt 돌파. UBC·6063 압출 스크랩 국내 매입가 상승. ISRI 등급별 가격 격차 확대 추세.</div></div></div>
-        <div class="nrow" data-c="al"><div class="n-meta"><div class="n-date">2026.03.04</div><span class="n-badge">메탈실리콘</span></div><div><div class="n-ttl">메탈실리콘 441, 중국 재고 증가로 가격 하락</div><div class="n-txt">중국 금속 실리콘 창고 재고 Q1 상승세. 441 그레이드 CFR Korea $1,680–1,720/mt. 알루미늄 합금사 춘계 가동 전 재고 확보 움직임.</div></div></div>
-        <div class="nrow" data-c="steel"><div class="n-meta"><div class="n-date">2026.02.28</div><span class="n-badge">철강</span></div><div><div class="n-ttl">동국제강 H형강 가격 동향 — 건설 수요 회복세</div><div class="n-txt">국내 H형강 유통가 소폭 반등. 건설경기 회복 기대감과 원자재 원가 상승이 복합 작용. 철근·후판 동반 강세.</div></div></div>
-      </div>
-    </div>
-  </section>
-</div>
 
 <!-- ════ CONTACT ════ -->
 <div id="pv-contact" class="pv">
@@ -1115,9 +1008,10 @@ var map = L.map('leaflet-map', {
       <span onclick="go('about')">회사 소개</span>
       <span onclick="go('products')">취급 품목</span>
       <span onclick="go('trading')">거래 역량</span>
-      <span onclick="go('news')">인사이트</span>
+      <span onclick="location.href='https://www.a1kor.com'">사업부 허브</span>
     </div>
-  </footer>
+  </div>
+</footer>
 
 
 <!-- PRODUCT MODAL -->
@@ -1209,7 +1103,7 @@ function closeMM(){
   document.getElementById('mobilemenu').classList.remove('open');
 }
 
-const PAGES = ['home','products','trading','news','about','contact'];
+const PAGES = ['home','products','trading','about','contact'];
 
 /* 주소창의 해시가 곧 현재 화면 — 뒤로가기·새로고침·링크 공유의 기준점 */
 function currentPage(){
@@ -1244,25 +1138,13 @@ window.addEventListener('popstate', function(){
   window.scrollTo({top:0,behavior:'auto'});
 });
 
-/* 해시가 붙은 주소로 바로 진입한 경우 (예: /#news) */
+/* 해시가 붙은 주소로 바로 진입한 경우 (예: /#products) */
 (function initFromHash(){
   const init = () => render(currentPage());
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
 
-/* 뉴스 카테고리 필터 */
-function fn(cat, btn){
-  document.querySelectorAll('.nc').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  document.querySelectorAll('#nlist .nrow').forEach(row=>{
-    if(cat==='all' || row.dataset.c===cat){
-      row.style.display='';
-    } else {
-      row.style.display='none';
-    }
-  });
-}
 
 /* 문의 폼 전송 */
 function sendForm(){
