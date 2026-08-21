@@ -1,5 +1,87 @@
 {
   "rewrites": [
-    { "source": "/main", "destination": "/main/index.html" }
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "glove.a1kor.com"
+        }
+      ],
+      "destination": "/glove/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "glove.a1kor.com"
+        }
+      ],
+      "destination": "/glove/$1"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "material.a1kor.com"
+        }
+      ],
+      "destination": "/main/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "material.a1kor.com"
+        }
+      ],
+      "destination": "/main/$1"
+    },
+    {
+      "source": "/main",
+      "destination": "/main/index.html"
+    },
+    {
+      "source": "/glove",
+      "destination": "/glove/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/glove/img/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/img/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "glove.a1kor.com"
+        }
+      ],
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/img/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    }
   ]
 }
