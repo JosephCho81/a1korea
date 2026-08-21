@@ -41,6 +41,10 @@
       "destination": "/main/$1"
     },
     {
+      "source": "/",
+      "destination": "/hub/index.html"
+    },
+    {
       "source": "/main",
       "destination": "/main/index.html"
     },
@@ -75,7 +79,7 @@
       ]
     },
     {
-      "source": "/img/(.*)",
+      "source": "/hub/img/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
