@@ -44,5 +44,5 @@ section{padding:84px 0;scroll-margin-top:72px;}
 .badge{text-align:center;padding:34px 22px;border:1px solid var(--line);border-radius:14px;background:#fff;}
 .badge b{display:block;font-size:34px;font-weight:800;color:var(--blue);letter-spacing:-.04em;line-height:1.2;}
 .badge p{margin-top:12px;font-size:15.5px;color:var(--body);}
-.badge-media{margin-top:26px;border-radius:14px;overflow:hidden;border:1px solid var(--line);}
+.badge-media{margin:26px auto 0;max-width:720px;border-radius:14px;overflow:hidden;border:1px solid var(--line);}
 

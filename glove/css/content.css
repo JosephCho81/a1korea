@@ -79,7 +79,7 @@
 .cmp-media img{border-radius:12px;border:1px solid var(--line);}
 
 /* SIZE */
-.sizes{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:900px;margin:0 auto;}
+.sizes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:600px;margin:0 auto;}
 .size{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px 14px;text-align:center;}
 .size b{display:block;font-size:26px;font-weight:800;color:var(--blue);}
 .size span{display:block;margin-top:10px;font-size:17px;font-weight:700;color:var(--ink);}
