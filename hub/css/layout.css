@@ -2,6 +2,13 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { width: 100%; height: 100%; overflow: hidden; font-family: 'Noto Sans KR', sans-serif; }
 
+/* 모바일 브라우저의 주소창이 접혔다 펴지면 100%(=큰 뷰포트)로 잡은 높이가
+   화면 밖으로 밀려 아래 패널의 버튼이 잘린다 — 실제로 보이는 높이를 쓴다. */
+@supports (height: 100dvh) {
+  html, body { height: 100dvh; }
+  .stage { height: 100dvh; }
+}
+
 .stage {
   position: fixed; inset: 0;
   display: flex;
