@@ -1,0 +1,67 @@
+/* ── TOPBAR ── */
+.topbar { background: var(--bg-darker); padding: 8px 0; font-size: 12px; color: rgba(255,255,255,0.45); }
+.topbar-in { max-width: 1300px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; }
+.topbar a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color .2s; }
+.topbar a:hover { color: #fff; }
+.topbar-r { display: flex; gap: 20px; align-items: center; }
+.topbar-r span { color: rgba(255,255,255,0.2); }
+
+/* ── NAV ── */
+nav { position: sticky; top: 0; z-index: 200; background: #fff; border-bottom: 2px solid var(--border); }
+.nav-in { max-width: 1300px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo { display: flex; align-items: center; gap: 10px; cursor: pointer; text-decoration: none; }
+.nav-logo img { height: 36px; width: auto; display: block; object-fit: contain; }
+.nav-logo-txt { line-height: 1.2; display: flex; flex-direction: column; justify-content: center; height: 34px; }
+.nav-logo-main { font-family: var(--sans); font-size: 17px; font-weight: 700; color: var(--charcoal); letter-spacing: -.01em; display: block; line-height: 1.2; }
+.nav-logo-sub { font-size: 10px; color: var(--muted); letter-spacing: .04em; display: block; line-height: 1.2; }
+.nav-links { display: flex; list-style: none; margin: 0; padding: 0; }
+.nav-links li span {
+  display: block; padding: 0 16px; line-height: 68px; height: 68px;
+  font-size: 13.5px; font-weight: 500; color: var(--mid); cursor: pointer;
+  border-bottom: 3px solid transparent; transition: color .2s, border-color .2s;
+  white-space: nowrap; letter-spacing: -.01em;
+}
+.nav-links li span:hover { color: var(--green); }
+.nav-links li span.active { color: var(--green); border-bottom-color: var(--green); }
+.nav-cta-btn {
+  background: var(--green); color: #fff; border: none;
+  font-family: var(--sans); font-size: 13px; font-weight: 700;
+  padding: 10px 22px; cursor: pointer; letter-spacing: .02em;
+  transition: background .2s; white-space: nowrap; margin-left: 12px;
+}
+.nav-cta-btn:hover { background: var(--green-dark); }
+
+
+/* ── 햄버거 버튼 ── */
+.ham-btn {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 40px; height: 40px; background: none; border: none; cursor: pointer;
+  padding: 6px; flex-shrink: 0;
+}
+.ham-btn span {
+  display: block; width: 22px; height: 2px; background: var(--charcoal);
+  transition: all .3s; border-radius: 2px;
+}
+.ham-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.ham-btn.open span:nth-child(2) { opacity: 0; }
+.ham-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── 모바일 드로어 메뉴 ── */
+.mobile-menu {
+  display: none; flex-direction: column;
+  background: #fff; border-top: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+.mobile-menu.open { display: flex; }
+.mm-item {
+  padding: 16px 20px; font-size: 15px; font-weight: 500; color: var(--mid);
+  border-bottom: 1px solid var(--border-lt); cursor: pointer; transition: all .15s;
+}
+.mm-item:hover { background: var(--bg-grey); color: var(--green); padding-left: 26px; }
+.mm-cta {
+  margin: 16px 20px 20px; background: var(--green); color: #fff;
+  padding: 14px 20px; font-size: 14px; font-weight: 700; cursor: pointer;
+  text-align: center; letter-spacing: .02em;
+}
+
+

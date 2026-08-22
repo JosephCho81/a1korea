@@ -1,0 +1,119 @@
+/* ── RESPONSIVE: 태블릿 ── */
+@media(max-width:1024px){
+  .nav-in,.sec-in,.cbanner-in,.foot-in,.topbar-in{padding:0 24px;}
+  .hero-in{padding:60px 24px;}
+  .pillars{grid-template-columns:1fr 1fr;}
+  .pg{grid-template-columns:1fr 1fr;}
+  .cred-g{grid-template-columns:1fr 1fr;}
+  .trade-g,.cap-wrap,.net-wrap,.biz-g,.cbanner-in,.cp-g{grid-template-columns:1fr;gap:36px;}
+  .trade-modes{grid-template-columns:1fr 1fr;}
+  .modal-box{padding:36px 28px;}
+  .modal-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:20px;}
+  .hstat{padding-right:20px;margin-right:20px;}
+}
+
+/* ── RESPONSIVE: 모바일 ── */
+@media(max-width:768px){
+  /* 탑바 */
+  .topbar-in{flex-direction:column;gap:4px;text-align:center;padding:8px 16px;}
+  .topbar-r{justify-content:center;flex-wrap:wrap;gap:8px;}
+
+  /* 네비 */
+  .nav-in{padding:0 16px;height:auto;flex-wrap:wrap;gap:0;}
+  nav{position:sticky;top:0;z-index:200;}
+  .nav-logo{padding:12px 0;}
+  .nav-logo img{height:32px;}
+  .nav-logo-main{font-size:17px;}
+  .nav-logo-sub{font-size:9px;}
+  .nav-links{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border-top:1px solid var(--border-lt);display:flex;flex-wrap:nowrap;
+    scrollbar-width:none;}
+  .nav-links::-webkit-scrollbar{display:none;}
+  .nav-links li span{padding:0 12px;line-height:44px;height:44px;font-size:12.5px;white-space:nowrap;}
+  .nav-cta-btn{display:none;}
+  .ham-btn{display:flex!important;}
+  .nav-links{display:none!important;}
+  .nav-in{flex-wrap:nowrap;padding:10px 16px;}
+
+  /* 공통 패딩 */
+  .nav-in,.sec-in,.cbanner-in,.foot-in,.topbar-in{padding:0 16px;}
+  .hero-in{padding:48px 16px 40px;}
+  .sec{padding:56px 0;}
+
+  /* 히어로 */
+  .hero{min-height:auto;}
+  .hero-h1{font-size:clamp(28px,8vw,44px);line-height:1.1;}
+  .hero-desc{font-size:14px;}
+  .hero-btns{flex-direction:column;gap:10px;}
+  .btn-g,.btn-w{width:100%;text-align:center;padding:14px;}
+  .hero-stats{flex-wrap:wrap;gap:20px;padding-top:20px;}
+  .hstat{border-right:none;margin-right:0;padding-right:0;
+    width:calc(50% - 10px);padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.1);}
+  .hstat:nth-child(3),.hstat:nth-child(4){border-bottom:none;}
+  .hstat-val{font-size:26px;}
+
+  /* 그리드 전부 1열 */
+  .pillars,.pg,.ig,.cred-g,.trade-g,.trade-modes,.cap-wrap,
+  .net-wrap,.biz-g,.cbanner-in,.cp-g{grid-template-columns:1fr;gap:1px;}
+  .ig .ic.feat{grid-column:auto;}
+  .cap-wrap,.net-wrap,.biz-g,.cbanner-in,.cp-g{gap:24px;}
+
+  /* 운영방식 다이어그램 */
+  .fd-row{flex-direction:column;gap:4px;}
+  .fd-arr{transform:rotate(90deg);align-self:center;padding:4px 0;}
+  .diag-grid{grid-template-columns:1fr 1fr 1fr;}
+  .diag-kv{grid-template-columns:1fr 1fr 1fr;}
+
+  /* 거래 절차 5단계 */
+  .trade-steps{grid-template-columns:1fr 1fr!important;}
+
+  /* 문의 배너 */
+  .cbanner{padding:48px 0;}
+  .cb-h{font-size:clamp(24px,6vw,36px);}
+  .cd-list{gap:18px;}
+
+  /* 섹션 제목 */
+  .sh{font-size:clamp(22px,6vw,32px);}
+
+  /* 뉴스 */
+  .nrow{flex-direction:column;gap:8px;}
+  .n-meta{width:auto;display:flex;align-items:center;gap:10px;}
+  .n-ttl{font-size:15px;}
+
+  /* 푸터 */
+  .foot-in{flex-direction:column;align-items:flex-start;gap:16px;}
+  .foot-nav{flex-wrap:wrap;gap:12px;}
+
+  /* 모달 */
+  .modal-box{width:100%;margin:0;padding:24px 16px;border-radius:0;min-height:100dvh;align-self:flex-start;}
+  .modal-ttl{font-size:26px;}
+  .modal-grid{grid-template-columns:1fr;gap:24px;}
+  .modal-ov{align-items:flex-start;}
+
+  /* About 페이지 */
+  .about-hero{padding:48px 0 40px;}
+  .cust-list{gap:8px;}
+
+  /* 제품 카드 이미지 */
+  .pc-img{height:160px;}
+
+  /* 거래 블록 패딩 */
+  .trade-b{padding:32px 24px;}
+  .tmode{padding:24px 20px;}
+  .pillar{padding:28px 22px;}
+  .cred-b{padding:26px 22px;}
+  .cp-box,.iq-g{padding:24px 20px;}
+  .rrow{padding:14px 16px;}
+
+}
+
+/* ── RESPONSIVE: 소형 모바일 ── */
+@media(max-width:400px){
+  .hero-h1{font-size:26px;}
+  .hstat{width:100%;}
+  .sh{font-size:22px;}
+  .modal-ttl{font-size:22px;}
+  .trade-steps{grid-template-columns:1fr!important;}
+  .diag-grid{grid-template-columns:1fr;}
+}

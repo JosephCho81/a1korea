@@ -1,0 +1,22 @@
+/* ── MODAL ── */
+.modal-ov { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 500; overflow-y: auto; backdrop-filter: blur(4px); }
+.modal-ov.on { display: flex; }
+.modal-box { background: #fff; max-width: 900px; width: 94%; margin: auto; padding: 52px 48px; position: relative; }
+.modal-cls { position: absolute; top: 20px; right: 20px; background: none; border: 1px solid var(--border); padding: 6px 14px; font-size: 11px; color: var(--muted); cursor: pointer; transition: all .2s; font-family: var(--sans); }
+.modal-cls:hover { border-color: var(--green); color: var(--green); }
+.modal-cat { font-size: 10.5px; color: var(--green); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 6px; }
+.modal-ttl { font-weight: 900; font-size: 38px; line-height: 1.1; margin-bottom: 6px; letter-spacing: -.02em; }
+.modal-origin { font-size: 12.5px; color: var(--muted); margin-bottom: 24px; display: flex; align-items: center; gap: 6px; }
+.modal-origin::before { content:''; width:8px; height:8px; border-radius:50%; background:var(--green); flex-shrink:0; }
+.modal-hr { height: 1px; background: var(--border); margin-bottom: 28px; }
+.modal-desc { font-size: 14px; color: var(--mid); line-height: 1.9; margin-bottom: 28px; }
+.modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.m-sec-ttl { font-size: 10.5px; color: var(--green); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.spec-tb { width: 100%; border-collapse: collapse; font-size: 13px; }
+.spec-tb tr { border-bottom: 1px solid var(--bg-grey); }
+.spec-tb td { padding: 9px 0; }
+.spec-tb td:first-child { font-size: 11px; color: var(--light); text-transform: uppercase; letter-spacing: .08em; width: 42%; }
+.spec-tb td:last-child { font-weight: 600; color: var(--mid); }
+.app-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.app-tag { font-size: 11.5px; border: 1px solid var(--border); padding: 4px 12px; color: var(--mid); background: var(--bg-grey); }
+

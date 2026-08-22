@@ -1,0 +1,52 @@
+/* 패널 컨텐츠 — 태그 · 타이틀 · 서브 */
+/* 패널 컨텐츠 */
+.panel-content {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 52px 52px;
+  z-index: 2;
+}
+
+/* 태그 */
+.p-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+  margin-bottom: 16px;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity .4s .1s, transform .4s .1s;
+}
+.panel:hover .p-tag { opacity: 1; transform: translateY(0); }
+.p-tag::before { content: ''; width: 22px; height: 1px; background: currentColor; }
+.panel-raw .p-tag   { color: #5ec97a; }
+.panel-glove .p-tag { color: #7ab4f5; }
+
+/* 타이틀 */
+.p-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 6vw, 84px);
+  color: #fff; line-height: .95; letter-spacing: .03em;
+  margin-bottom: 14px;
+  transform: translateY(8px);
+  transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+}
+.panel:hover .p-title { transform: translateY(0); }
+.p-title span {
+  display: block;
+  -webkit-text-stroke: 1.5px rgba(255,255,255,.25);
+  color: transparent;
+  transition: color .4s .15s, -webkit-text-stroke .4s;
+}
+.panel-raw:hover .p-title span   { color: #2B8C3C; -webkit-text-stroke-color: transparent; }
+.panel-glove:hover .p-title span { color: #3b82f6; -webkit-text-stroke-color: transparent; }
+
+/* 서브 */
+.p-sub {
+  font-size: 13.5px; color: rgba(255,255,255,.55);
+  line-height: 1.65; max-width: 280px;
+  opacity: 0; transform: translateY(10px);
+  transition: opacity .4s .2s, transform .4s .2s;
+  margin-bottom: 28px;
+}
+.panel:hover .p-sub { opacity: 1; transform: translateY(0); }
+

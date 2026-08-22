@@ -1,0 +1,3 @@
+/* Leaflet 마커 라벨 오버라이드 */
+.map-lbl { background:none!important; border:none!important; box-shadow:none!important; font-size:12px!important; font-weight:700!important; color:#222!important; padding:0!important; text-shadow:1px 1px 2px #fff,-1px -1px 2px #fff,1px -1px 2px #fff,-1px 1px 2px #fff!important; }
+.map-lbl-hq { background:none!important; border:none!important; box-shadow:none!important; font-size:13px!important; font-weight:700!important; color:#1a6e2a!important; padding:0!important; text-shadow:1px 1px 2px #fff,-1px -1px 2px #fff,1px -1px 2px #fff,-1px 1px 2px #fff!important; }

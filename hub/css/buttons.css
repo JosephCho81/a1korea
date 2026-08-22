@@ -1,0 +1,52 @@
+/* 버튼 — 사이트 입장 · 시장 뉴스 */
+/* ── 버튼 그룹 ── */
+.p-btns {
+  display: flex; flex-direction: column; gap: 10px;
+  opacity: 0; transform: translateY(8px);
+  transition: opacity .35s .25s, transform .35s .25s;
+}
+.panel:hover .p-btns { opacity: 1; transform: translateY(0); }
+
+/* 메인 버튼 (사이트 입장) */
+.btn-main {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 13px; font-weight: 700; letter-spacing: .08em;
+  border: none; background: none; cursor: pointer;
+  font-family: inherit; padding: 0; width: fit-content;
+}
+.btn-main::after {
+  content: ''; width: 28px; height: 1px;
+  background: currentColor; transition: width .3s;
+}
+.btn-main:hover::after { width: 44px; }
+.panel-raw   .btn-main { color: #5ec97a; }
+.panel-glove .btn-main { color: #7ab4f5; }
+
+/* 서브 버튼 (시장 뉴스) */
+.btn-news {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,.15); background: rgba(255,255,255,.04);
+  cursor: pointer; font-family: inherit;
+  padding: 9px 14px; width: fit-content;
+  color: rgba(255,255,255,.55);
+  transition: all .25s;
+}
+.btn-news:hover {
+  border-color: rgba(255,255,255,.4);
+  background: rgba(255,255,255,.08);
+  color: rgba(255,255,255,.9);
+}
+.panel-raw   .btn-news { border-color: rgba(94,201,122,.35); color: #5ec97a; background: rgba(43,140,60,.1); }
+.panel-raw   .btn-news:hover { border-color: rgba(94,201,122,.8); background: rgba(43,140,60,.2); }
+.panel-glove .btn-news { border-color: rgba(122,180,245,.35); color: #7ab4f5; background: rgba(59,130,246,.1); }
+.panel-glove .btn-news:hover { border-color: rgba(122,180,245,.8); background: rgba(59,130,246,.2); }
+.btn-news-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+  animation: livepulse 1.6s ease-in-out infinite;
+}
+.panel-raw   .btn-news-dot { background: #5ec97a; }
+.panel-glove .btn-news-dot { background: #7ab4f5; }
+@keyframes livepulse { 0%,100%{opacity:1} 50%{opacity:.25} }
+.btn-news-arrow { font-size: 12px; margin-left: 2px; transition: transform .25s; }
+.btn-news:hover .btn-news-arrow { transform: translate(2px,-2px); }
