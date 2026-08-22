@@ -29,4 +29,5 @@
   .sizes{grid-template-columns:repeat(2,1fr);}
   .q-box,.oat-card,.split-txt,.tip{padding-left:22px;padding-right:22px;}
   .hero-copy{padding:40px 18px 52px;}
+  .btn-store{font-size:13px;padding:8px 13px;}
 }
