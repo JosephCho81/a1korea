@@ -10,7 +10,8 @@
   .badges{grid-template-columns:1fr;}
   .prob{grid-template-columns:1fr 1fr;}
   .aql{grid-template-columns:1fr 1fr;}
-  .split,.feat-hero,.oat-grid{grid-template-columns:1fr;}
+  .split,.feat-hero,.oat-grid,.talk-split{grid-template-columns:1fr;}
+  .talk{font-size:16.5px;line-height:1.9;}
   .feat-grid{grid-template-columns:1fr 1fr;}
   .lineup{grid-template-columns:1fr 1fr;}
   .cmp-row{grid-template-columns:1fr;gap:2px;}
