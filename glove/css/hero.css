@@ -8,10 +8,13 @@ section{padding:84px 0;scroll-margin-top:72px;}
 .pill{display:inline-block;padding:9px 17px;border:1px solid var(--line-blue);background:var(--film);color:var(--blue);border-radius:999px;font-size:14.5px;font-weight:700;}
 
 /* HERO */
-.hero-media{width:100%;aspect-ratio:1800/860;overflow:hidden;background:var(--film);}
+/* 제품 박스까지 다 보이도록 원본 비율 그대로 — 초광폭 화면에서만 상하 균등 크롭 */
+.hero-media{width:100%;aspect-ratio:1672/941;max-height:900px;overflow:hidden;background:var(--film);}
+.hero-media img{object-position:50% 50%;}
 .hero-media img{width:100%;height:100%;object-fit:cover;}
 .hero-copy{padding:52px 28px 66px;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:var(--maxw);margin:0 auto;}
 .hero-copy h1{margin-top:16px;font-size:clamp(30px,5vw,46px);}
+.hero-copy h1 em{font-style:normal;color:var(--blue);}
 .hero-copy .lead{margin-top:22px;font-size:17.5px;line-height:1.75;}
 .hero-copy .lead b{color:var(--ink);font-weight:700;}
 .hero-pills{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}

@@ -50,6 +50,8 @@
 .oat-spec span{display:block;margin-top:6px;font-size:16px;color:var(--ink);font-weight:700;}
 
 /* LINEUP */
+.lineup-media{margin:0 0 26px;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+.lineup-media img{width:100%;aspect-ratio:1800/720;object-fit:cover;object-position:50% 45%;}
 .lineup{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .p-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .22s,box-shadow .22s,border-color .22s;}
 .p-card:hover{transform:translateY(-4px);box-shadow:0 22px 40px -22px rgba(18,56,107,.35);border-color:var(--line-blue);}
