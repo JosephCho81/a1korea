@@ -12,3 +12,43 @@
   .header-logo-t { font-size: 15px; }
   .hint { bottom: 16px; }
 }
+
+/* 터치 기기 — hover가 없으므로 패널 내용이 처음부터 보여야 한다.
+   768px 이하만 처리하면 태블릿(769px 이상 터치)에서 내용이 안 보인 채 남는다. */
+@media (hover: none) {
+  .p-tag, .p-sub, .p-btns { opacity: 1; transform: translateY(0); }
+  /* 타이틀 셋째 줄이 외곽선만 남아 배경에 묻힌다 — 색을 채운다 */
+  .p-title span { -webkit-text-stroke-color: transparent; }
+  .panel-raw   .p-title span { color: #5ec97a; }
+  .panel-glove .p-title span { color: #7ab4f5; }
+  /* 손가락으로 누를 영역 확보 */
+  .btn-main { padding: 12px 0; }
+  .btn-news { padding: 11px 15px; }
+}
+
+@media (max-width: 768px) {
+  /* 세로 배치에서는 하단 힌트가 아래 패널 버튼 위에 겹친다.
+     패널이 화면을 반씩 채우고 있어 안내 자체가 필요 없다. */
+  .hint { display: none; }
+  /* hover:none 블록과 같은 내용 — 폭 기준으로도 걸어 실제 폰에서 확실히 적용되게 한다 */
+  .p-title span { -webkit-text-stroke-color: transparent; }
+  .panel-raw   .p-title span { color: #5ec97a; }
+  .panel-glove .p-title span { color: #7ab4f5; }
+  .btn-main { padding: 12px 0; }
+  .btn-news { padding: 11px 15px; }
+  .hint span { font-size: 11.5px; }
+
+  .header-sub { font-size: 12px; }
+  .p-tag { font-size: 12px; }
+  .p-sub { font-size: 14px; line-height: 1.7; max-width: none; }
+  .btn-main { font-size: 14px; }
+  .btn-news { font-size: 12.5px; }
+}
+
+/* 동작 줄이기를 켠 사용자 — .panel은 opacity:0에서 애니메이션으로 나타나므로
+   애니메이션을 끄면 화면이 비어버린다. 최종 상태를 그대로 보여준다. */
+@media (prefers-reduced-motion: reduce) {
+  .panel { opacity: 1; animation: none; }
+  .hint { animation: none; opacity: .5; }
+  * { transition-duration: .01ms !important; }
+}
