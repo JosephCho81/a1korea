@@ -25,7 +25,7 @@
   .nav-logo{padding:12px 0;}
   .nav-logo img{height:32px;}
   .nav-logo-main{font-size:17px;}
-  .nav-logo-sub{font-size:9px;}
+  .nav-logo-sub{font-size:11px;}
   .nav-links{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;
     border-top:1px solid var(--border-lt);display:flex;flex-wrap:nowrap;
     scrollbar-width:none;}
@@ -87,6 +87,13 @@
 
   /* 모달 */
   .modal-box{width:100%;margin:0;padding:24px 16px;border-radius:0;min-height:100dvh;align-self:flex-start;}
+  .modal-cls{font-size:13px;padding:10px 14px;}
+  .modal-cat,.m-sec-ttl{font-size:12px;letter-spacing:.1em;}
+  .modal-origin{font-size:13.5px;}
+  .modal-desc{font-size:15px;word-break:keep-all;}
+  .spec-tb{font-size:14px;}
+  .spec-tb td:first-child{font-size:12.5px;letter-spacing:.04em;}
+  .app-tag{font-size:12.5px;padding:6px 12px;}
   .modal-ttl{font-size:26px;}
   .modal-grid{grid-template-columns:1fr;gap:24px;}
   .modal-ov{align-items:flex-start;}
@@ -116,4 +123,66 @@
   .modal-ttl{font-size:22px;}
   .trade-steps{grid-template-columns:1fr!important;}
   .diag-grid{grid-template-columns:1fr;}
+}
+
+
+/* ── 모바일 타이포 ──
+   데스크톱 기준으로 잡힌 9~13px 라벨은 손에 들고 보면 읽히지 않는다.
+   레이아웃은 위 블록에서 이미 1열로 접히므로 여기서는 크기만 올린다. */
+@media(max-width:768px){
+  body{font-size:16px;}
+  .topbar-in{font-size:12.5px;}
+  .kicker{font-size:12.5px;letter-spacing:.14em;}
+  .slead{font-size:15.5px;line-height:1.85;}
+  .hero-desc{font-size:15.5px;}
+  .hstat-lbl{font-size:12.5px;}
+
+  .pillar-num{font-size:12.5px;}
+  .pillar-ttl{font-size:17.5px;}
+  .pillar-body{font-size:15px;line-height:1.8;}
+
+  .pc-cat{font-size:12.5px;letter-spacing:.1em;}
+  .pc-name{font-size:17.5px;}
+  .pc-origin{font-size:13px;}
+  .pc-desc{font-size:14.5px;line-height:1.7;}
+  .pc-cta{font-size:13.5px;}
+
+  .cap-ttl{font-size:16.5px;}
+  .cap-body{font-size:15px;line-height:1.8;}
+  .cred-num{font-size:12px;letter-spacing:.1em;}
+  .foot-nav span{font-size:13px;padding:7px 0;display:inline-block;}
+  .cred-ttl{font-size:17px;}
+  .cred-body{font-size:15px;line-height:1.8;}
+  .cust-ttl{font-size:16px;}
+  .cust-desc{font-size:14px;}
+  .trade-ttl{font-size:18px;}
+  .trade-txt{font-size:15px;line-height:1.8;}
+  .trade-lbl,.tmode-lbl{font-size:12px;}
+  .tmode-ttl{font-size:17px;}
+  .tmode-txt{font-size:14.5px;line-height:1.75;}
+  .gtag{font-size:12.5px;}
+
+  .fdn-t{font-size:14.5px;}
+  .fdn-s{font-size:12px;}
+  .diag-lbl{font-size:12px;letter-spacing:.08em;}
+  .diag-val{font-size:13.5px;}
+
+  .rname{font-size:15.5px;}
+  .rrole{font-size:12px;}
+  .rgoods{font-size:13.5px;}
+
+  .cd-lbl,.cp-lbl{font-size:12px;}
+  .cd-val,.cp-val{font-size:17px;}
+  .cd-sub,.cp-sub{font-size:13px;}
+  .iq-ttl{font-size:15.5px;}
+  .iq-desc{font-size:14px;}
+
+  /* 한국어 단어 중간에서 줄이 끊기지 않게 */
+  .slead,.hero-desc,.pc-desc,.pillar-body,.cap-body,.cred-body,
+  .trade-txt,.tmode-txt,.cust-desc,.iq-desc,.rgoods{word-break:keep-all;}
+
+  /* 회사소개·거래역량 페이지에 인라인으로 박힌 작은 글씨 */
+  [style*="font-size:9.5px"],[style*="font-size:10.5px"]{font-size:12px!important;}
+  [style*="font-size:11px"]{font-size:12.5px!important;}
+  [style*="font-size:12px"],[style*="font-size:12.5px"]{font-size:14px!important;}
 }

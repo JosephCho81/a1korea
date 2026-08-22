@@ -2,7 +2,7 @@
 @media (max-width:900px){
   body{font-size:16px;}
   .nav-links{display:none;}
-  .hamb{display:flex;}
+  .hamb{display:flex;width:44px;height:44px;}
   section{padding:62px 0;}
   .q-row{grid-template-columns:1fr;gap:4px;}
   .q-row:first-child{display:none;}
@@ -19,7 +19,8 @@
   .cmp-media{grid-template-columns:1fr;}
   .sizes{grid-template-columns:repeat(3,1fr);}
   .uses{grid-template-columns:1fr 1fr;}
-  .hero-media{aspect-ratio:16/10;}
+  /* 원본 비율 그대로 — 16/10으로 두면 좌우가 잘려 제품 박스가 사라진다 */
+  .hero-media{aspect-ratio:1672/941;max-height:none;}
 }
 @media (max-width:560px){
   .wrap,.nav-in,.topbar-in{padding-left:18px;padding-right:18px;}
@@ -31,4 +32,16 @@
   .q-box,.oat-card,.split-txt,.tip{padding-left:22px;padding-right:22px;}
   .hero-copy{padding:40px 18px 52px;}
   .btn-store{font-size:13px;padding:8px 13px;}
+}
+
+/* ── 모바일 터치 영역 · 줄바꿈 ── */
+@media(max-width:900px){
+  .topbar-in{padding:7px 18px;gap:2px 12px;}
+  .topbar a{display:inline-block;padding:4px 0;}
+  .foot-nav{gap:6px 20px;}
+  .foot-nav a{display:inline-block;padding:9px 0;}
+  .foot-meta a{display:inline-block;padding:6px 0;}
+  .nav-links.open a{height:auto;padding:14px 4px;}
+  .hero-copy .lead,.talk p,.sec-head p,.prob-item p,.badge p,
+  .aql-note,.cmp-note,.size-note,.lineup-note,.empathy p{word-break:keep-all;}
 }
