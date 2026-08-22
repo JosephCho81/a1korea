@@ -21,3 +21,6 @@ footer { background: var(--bg-darker); padding: 44px 0; border-top: 1px solid rg
 .foot-nav span { font-size: 11px; color: rgba(255,255,255,.28); cursor: pointer; transition: color .2s; letter-spacing: .06em; }
 .foot-nav span:hover { color: rgba(255,255,255,.7); }
 
+
+.cd-more { display: inline-block; margin-top: 4px; font-size: 13px; font-weight: 700; color: #7EE89A; cursor: pointer; letter-spacing: .01em; }
+.cd-more:hover { text-decoration: underline; }

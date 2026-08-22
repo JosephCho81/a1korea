@@ -27,6 +27,8 @@ footer{background:#0F2E52;padding:48px 0 34px;}
 .foot-meta a{color:rgba(255,255,255,.5);}
 
 /* REVEAL */
-.rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
-.rv.show{opacity:1;transform:none;}
+/* 초기 은닉은 reveal.js가 html에 .rvon을 붙였을 때만 — 스크립트 실패 시 콘텐츠는 그대로 노출 */
+.rvon .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+.rvon .rv.show{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){.rvon .rv{opacity:1;transform:none;transition:none;}}
 

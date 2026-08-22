@@ -18,6 +18,9 @@ function render(page){
   document.querySelectorAll('.nav-links li span').forEach(s=>s.classList.remove('active'));
   const navEl=document.getElementById('n-'+page);
   if(navEl) navEl.classList.add('active');
+
+  /* 새로 드러난 화면의 등장 애니메이션 재검사 */
+  if(window.revealSweep) window.revealSweep();
   return true;
 }
 

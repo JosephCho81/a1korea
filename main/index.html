@@ -49,6 +49,7 @@
       <li><span id="n-about" onclick="go('about')">회사 소개</span></li>
       <li><span id="n-products" onclick="go('products')">취급 품목</span></li>
       <li><span id="n-trading" onclick="go('trading')">거래 역량</span></li>
+      <li><span id="n-contact" onclick="go('contact')">문의하기</span></li>
     </ul>
     <button class="ham-btn" id="hambtn" onclick="toggleMM()" aria-label="메뉴 열기">
       <span></span><span></span><span></span>
@@ -59,6 +60,7 @@
     <div class="mm-item" onclick="go('about');closeMM()">회사 소개</div>
     <div class="mm-item" onclick="go('products');closeMM()">취급 품목</div>
     <div class="mm-item" onclick="go('trading');closeMM()">거래 역량</div>
+    <div class="mm-item" onclick="go('contact');closeMM()">문의하기</div>
     <div class="mm-item" onclick="location.href='https://www.a1kor.com'">사업부 허브 ↗</div>
   </div>
 </nav>
@@ -70,9 +72,6 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.55;pointer-events:none;">
-    <source src="https://a1korea.make-good.co.kr/common/images/glove_video.mp4" type="video/mp4">
-  </video>
   <div class="hero-in">
     
     <h1 class="hero-h1"><em>원자재 전문</em> 공급사</h1>
@@ -291,15 +290,11 @@
           </div>
           <div class="cap-item">
             <div class="cap-ttl">수요처 규격 맞춤 공급</div>
-            <div class="cap-body">수요처의 용해로(Melt-Shop) 요구 규격에 맞춰 공급합니다. 표준 그레이드뿐 아니라 별도 규격(Custom Spec)도 협의 가능하며.</div>
+            <div class="cap-body">수요처의 용해로(Melt-Shop) 요구 규격에 맞춰 공급합니다. 표준 그레이드뿐 아니라 별도 규격(Custom Spec)도 협의 가능합니다.</div>
           </div>
           <div class="cap-item">
-            <div class="cap-ttl">물류 전담 관리</div>
-            <div class="cap-body">해상 운송·항만 하역·통관·서류(B/L, COO, COA) 일체를 관리합니다. 수급 기획부터 목적지 인도까지 일정 관리.</div>
-          </div>
-          <div class="cap-item">
-            <div class="cap-ttl">물류 &amp; 서류 관리</div>
-            <div class="cap-body">B/L, COO, 패킹리스트 등 전체 서류를 관리합니다. 국내 통관 협력 가능. 선하증권 발행부터 인도까지 일정 관리.</div>
+            <div class="cap-ttl">물류 · 서류 전담 관리</div>
+            <div class="cap-body">해상 운송·항만 하역·통관을 직접 관리하고, B/L·COO·COA·패킹리스트 등 서류 일체를 처리합니다. 수급 기획부터 목적지 인도까지 일정을 책임집니다.</div>
           </div>
           <div class="cap-item">
             <div class="cap-ttl">시장 정보 제공</div>
@@ -348,6 +343,7 @@
       <div><div class="cd-lbl">이메일</div><div class="cd-val"><a href="mailto:a1@a1kor.com"  >a1@a1kor.com</a></div><div class="cd-sub">거래·견적·납기 문의</div></div>
       <div><div class="cd-lbl">소재지</div><div class="cd-val">경기 김포시 고촌읍 은행영사정로157</div><div class="cd-sub">법인 등록·운영 사무소</div></div>
       <div><div class="cd-lbl">업무 시간</div><div class="cd-val">월~금 10:00–18:00 KST</div><div class="cd-sub">1영업일 이내 회신</div></div>
+      <a class="cd-more" onclick="go('contact');return false;">문의 안내 자세히 보기 →</a>
     </div>
   </div>
 </div>
@@ -548,6 +544,7 @@
       <span onclick="go('about')">회사 소개</span>
       <span onclick="go('products')">취급 품목</span>
       <span onclick="go('trading')">거래 역량</span>
+      <span onclick="go('contact')">문의하기</span>
       <span onclick="location.href='https://www.a1kor.com'">사업부 허브</span>
     </div>
   </div>
@@ -566,7 +563,6 @@
 <script src="js/modal.js"></script>
 <script src="js/nav.js"></script>
 <script src="js/router.js"></script>
-<script src="js/form.js"></script>
 <script src="js/reveal.js"></script>
 </body>
 </html>
