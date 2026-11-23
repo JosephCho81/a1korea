@@ -12,7 +12,7 @@
 ## 파일 맵 — 디자인 수정 시 여는 파일
 
 ### hub/ (진입 스플릿 화면, 2026-11 3D 개편)
-- `index.html` — CSS·JS 인라인 (토큰은 `<style>` 맨 위 `:root`). 왼쪽 원자재 / 오른쪽 글러브 패널, 마우스 올린 쪽이 넓어짐
+- `index.html` — CSS·JS 인라인 (토큰은 `<style>` 맨 위 `:root`). 위 원자재 / 아래 글러브 가로 띠(라인이 길게 보이게), 마우스 올린 쪽이 높아짐
 - `js/steel-line.js` — main과 같은 파일. `mount(el, null, { view })`로 라벨 없이 한 장면 고정
 - `js/glove-line.js` — 니트릴 딥핑 라인(손 모양 틀 → 응고제 · 니트릴 · 세척조 → 탈형 → 상자 포장). 상자 디자인은 `boxMaterials()` (Glovetree 파랑 · 검정 · 오트밀, `glove/img/box-*.jpg` 실물 기준)
 - `img/a1-logo.png` — 로고
