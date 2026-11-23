@@ -18,18 +18,13 @@
 - `css/responsive.css` — 768px 이하
 - `js/hub.js` — 패널 클릭 시 플래시 후 이동
 
-### main/ (원자재 · 해시 라우팅 SPA)
-- `css/base.css` — **디자인 토큰(`:root` 색·폰트)** · 리셋
-- `css/nav.css` — 상단 바 · 네비 · 햄버거 · 모바일 드로어
-- `css/hero.css` — 화면 전환(`.pv`) · 히어로 · 히어로 통계바
-- `css/sections.css` — 공통 섹션 · 필러 · 품목 카드 · 역량 · 네트워크
-- `css/footer.css` — 다크 문의 배너 · 푸터
-- `css/modal.css` — 품목 상세 모달
-- `css/pages.css` — 회사소개 / 거래역량 / 문의 페이지 전용
-- `css/responsive.css` — 1024 / 768 / 400px (다수 `!important`)
-- `css/map.css` — Leaflet 라벨 오버라이드
-- `js/data.js` — 품목 스펙 데이터(`PD`) · **내용 수정은 여기만**
-- `js/modal.js` `js/nav.js` `js/router.js` `js/form.js` `js/reveal.js` `js/map.js`
+### main/ (원자재 · 단일 페이지, 2026-11 전면 개편)
+- `index.html` — CSS·JS 인라인 (토큰은 `<style>` 맨 위 `:root`). base64 로고 없음
+  - 순서: nav → 3D 공정도(`#process`, 첫 화면) → 취급 품목(`#items`) → 원료가 오는 길(`#story`, 영상 4장면) → 문의(`#contact`)
+  - `?hero=video` 면 용해로 영상 첫 화면 (기본은 3D)
+- `js/steel-line.js` — three r147 아이소메트릭 제강 · 알루미늄 라인. 라벨(`L`) · 카메라 단계(`steps`)가 `#cap .c` 캡션 순서와 1:1
+- `js/data.js` — 품목 스펙 데이터(`PD`) · **품목 내용 수정은 여기만**
+- `media/` — 영상(1080p, crf27) · 포스터 · `img/` 품목 참고 사진 (Pexels). 원본은 `samples/media/raw`(git 제외)
 
 ### glove/ (글러브트리 · 단일 랜딩)
 - `css/base.css` — **디자인 토큰** · 리셋
@@ -42,11 +37,11 @@
 
 ## 토큰 절약 규칙 (디자인 변경 작업)
 
-1. **index.html은 열지 말 것.** 색/여백/폰트/그림자/반응형은 전부 `css/`에 있음.
+1. **glove/hub의 index.html은 열지 말 것.** 색/여백/폰트/그림자/반응형은 전부 `css/`에 있음.
    클래스명을 모르면 `grep -n "클래스명" <site>/css/*.css`로 파일부터 특정.
-2. **색·폰트 전역 변경은 `css/base.css`의 `:root` 토큰만 수정.** main/glove 모두 토큰 기반.
+2. **색·폰트 전역 변경은 `:root` 토큰만 수정.** glove는 `css/base.css`, main은 `index.html` `<style>` 맨 위.
    (hub는 토큰 없이 하드코딩 — `css/layout.css`·`panel.css` 직접 수정)
-3. `main/index.html`·`glove/index.html`은 base64 로고가 한 줄에 30KB씩 박혀 있음 →
+3. `glove/index.html`은 base64 로고가 한 줄에 30KB씩 박혀 있음 →
    **전체 Read 금지.** 필요하면 `sed -n 'A,Bp'`로 구간만.
 4. 마크업을 꼭 바꿔야 하면 `grep -n`으로 위치 찾고 Edit로 그 줄만.
 5. 검증은 `python -m http.server 8899` 후 `/main/index.html` 등으로 확인. rewrite 없이도
