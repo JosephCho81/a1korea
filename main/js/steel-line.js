@@ -15,7 +15,7 @@
     return keys[keys.length - 1].slice(1);
   }
 
-  function mount(container, labelLayer) {
+  function mount(container, labelLayer, opts = {}) {
     const lowPower = innerWidth < 760;
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(devicePixelRatio, lowPower ? 1.5 : 2));
@@ -557,7 +557,7 @@
     const chgDust = stream(24, 0xFFB46A, 2.4);
 
     // ── 라벨
-    const L = [
+    const L = (labelLayer ? [
       { k: 'st', text: '원료 야적', p: [-31, 3.6, -5.6], step: 1 },
       { k: 'st', text: '전기로', p: [-14, 14.6, -5.5], step: 1 },
       { k: 'in', text: '가탄제 · 소괴탄', p: [-25.6, 2.2, -0.6], step: 1 },
@@ -578,7 +578,7 @@
       { k: 'st', text: '탈가스 정련', p: [9.6, 5.0, AZ], step: 7 },
       { k: 'st', text: '잉곳 주조', p: [16, 3.4, AZ], step: 7 },
       { k: 'out', text: 'ADC12 합금 잉곳', p: [22.7, 1.6, AZ + 1.4], step: 7 }
-    ].map(l => {
+    ] : []).map(l => {
       const el = document.createElement('div');
       el.className = 'sl-label sl-' + l.k; el.textContent = l.text;
       labelLayer.appendChild(el);
@@ -598,10 +598,11 @@
     ];
     const v = new THREE.Vector3(), v2 = new THREE.Vector3(), clock = new THREE.Clock(), reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const phase = { bucket: 0, ladle: 0, chg: 0 };
+    if (opts.view) steps[0] = opts.view; // 허브처럼 한 장면만 고정해서 보여줄 때
     const cur = { tx: steps[0].t[0], ty: steps[0].t[1], tz: steps[0].t[2], size: steps[0].size, fx: 0.62, fy: 0.5 };
     let activeStep = 0;
     function focus(i) {
-      activeStep = i; const s = steps[i], m = innerWidth < 760;
+      activeStep = i; const s = steps[i], m = !opts.view && innerWidth < 760;
       gsap.to(cur, { tx: s.t[0], ty: s.t[1], tz: s.t[2], size: s.size * (m ? (i ? 1.6 : 2.0) : 1), fx: m ? 0.5 : (s.fx || 0.64), fy: m ? 0.32 : (s.fy || 0.5), duration: 1.4, ease: 'power3.inOut' });
       L.forEach(l => l.el.classList.toggle('dim', i > 0 && l.step !== i));
       const cue = { 1: ['bucket', 14, 0.08], 2: ['ladle', 22, 0.035], 4: ['ladle', 22, 0.265], 5: ['ladle', 22, 0.47], 6: ['chg', 16, 0.15] }[i];
@@ -614,6 +615,7 @@
       renderer.domElement.style.width = w + 'px'; renderer.domElement.style.height = h + 'px';
     }
     addEventListener('resize', resize); resize();
+    if (window.ResizeObserver) new ResizeObserver(resize).observe(container);
 
     // 레이들 순환 (22초): 출강 → LF → 크레인으로 턴렛 → 주입 → 복귀
     const ladleKeys = [[0, -14, 0.55], [0.17, -14, 0.55], [0.24, -2, 0.55], [0.42, -2, 0.55], [0.47, 3, 0.55], [0.53, 3, 9.6], [0.58, 7, 9.6], [0.61, 7, 6.9], [0.76, 7, 6.9], [0.8, 7, 9.6], [0.84, 3, 9.6], [0.87, 3, 0.55], [0.97, -14, 0.55], [1, -14, 0.55]];
