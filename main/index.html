@@ -64,6 +64,17 @@ video,img{display:block}
 .legend .i::before{background:var(--ember)}
 .legend .o::before{border:1px solid var(--bone)}
 .dots{position:absolute;left:28px;bottom:28px;z-index:5;display:flex;gap:8px}
+/* 스크롤 안내: 첫 단계에서만 희미하게 */
+.scroll-hint{position:absolute;left:50%;bottom:30px;z-index:5;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:12px;font-weight:600;color:var(--mist);opacity:.7;pointer-events:none;transition:opacity .5s}
+.scroll-hint.off{opacity:0}
+.scroll-hint .mouse{width:22px;height:34px;border:1.5px solid currentColor;border-radius:12px;position:relative}
+.scroll-hint .mouse::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:currentColor;animation:wheel 1.8s ease-in-out infinite}
+@keyframes wheel{0%{transform:translateY(0);opacity:1}70%{transform:translateY(9px);opacity:0}100%{opacity:0}}
+.scroll-hint .swipe{display:none;flex-direction:column;align-items:center}
+.scroll-hint .swipe i{display:block;width:10px;height:10px;border-left:1.5px solid currentColor;border-top:1.5px solid currentColor;transform:rotate(45deg);margin-top:-3px;animation:swipe 1.8s ease-in-out infinite}
+.scroll-hint .swipe i:nth-child(2){animation-delay:.15s}
+@keyframes swipe{0%,100%{opacity:.2;transform:translateY(4px) rotate(45deg)}50%{opacity:1;transform:translateY(-2px) rotate(45deg)}}
+.scroll-hint .t-m{display:none}
 .dots button{width:28px;height:28px;display:grid;place-items:center}
 .dots button::before{content:"";width:18px;height:2px;background:var(--line);transition:background .3s,width .3s}
 .dots button.on::before{background:var(--ember);width:28px}
@@ -147,6 +158,10 @@ video,img{display:block}
   .cap p{font-size:14.5px}
   .sl-label{font-size:11px}
   .legend{display:none}
+  .scroll-hint{left:auto;right:18px;bottom:66px;transform:none;flex-direction:row;gap:8px;opacity:.85}
+  .scroll-hint .swipe i{width:8px;height:8px}
+  .scroll-hint .mouse,.scroll-hint .t-d{display:none}
+  .scroll-hint .swipe,.scroll-hint .t-m{display:flex}
   .line::after{background:linear-gradient(0deg,rgba(11,13,16,.96) 0,rgba(11,13,16,.85) 32%,rgba(11,13,16,0) 56%)}
   .dots{left:12px;bottom:14px}
   .rail{display:none}
@@ -205,6 +220,7 @@ video,img{display:block}
     <div class="c"><div class="k">알루미늄 · 주조</div><h2>정련한 쇳물을<br>잉곳으로 굳힙니다</h2><p>질소를 불어 넣어 가스와 불순물을 빼낸 뒤, 연속 주형에 부어 ADC12 같은 합금 잉곳으로 출하합니다.</p></div>
   </div>
   <div class="dots" id="dots"></div>
+  <div class="scroll-hint" id="scrollHint" aria-hidden="true"><span class="mouse"></span><span class="swipe"><i></i><i></i></span><span class="t-d">스크롤하면 다음 공정으로 넘어갑니다</span><span class="t-m">위로 밀면 다음 공정으로 넘어갑니다</span></div>
   <div class="legend"><span class="i">(주)한국에이원 취급품목</span><span class="o">나오는 것</span></div>
 </section>
 
@@ -307,6 +323,7 @@ function setStep(i) {
   if (line) line.focus(i);
   caps.forEach((c, k) => c.classList.toggle('on', k === i));
   dotBtns.forEach((d, k) => d.classList.toggle('on', k === i));
+  document.getElementById('scrollHint').classList.toggle('off', i > 0);
 }
 const lineST = ScrollTrigger.create({
   trigger: '.line', start: 'top top', end: '+=' + caps.length * 40 + '%', pin: true,

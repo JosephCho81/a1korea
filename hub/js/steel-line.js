@@ -600,10 +600,13 @@
     const phase = { bucket: 0, ladle: 0, chg: 0 };
     if (opts.view) steps[0] = opts.view; // 허브처럼 한 장면만 고정해서 보여줄 때
     const cur = { tx: steps[0].t[0], ty: steps[0].t[1], tz: steps[0].t[2], size: steps[0].size, fx: 0.62, fy: 0.5 };
-    let activeStep = 0;
+    let activeStep = 0, labelsOff = false;
     function focus(i) {
       activeStep = i; const s = steps[i], m = !opts.view && innerWidth < 760;
-      gsap.to(cur, { tx: s.t[0], ty: s.t[1], tz: s.t[2], size: s.size * (m ? (i ? 1.6 : 2.0) : 1), fx: m ? 0.5 : (s.fx || 0.64), fy: m ? 0.32 : (s.fy || 0.5), duration: 1.4, ease: 'power3.inOut' });
+      // 모바일 전체 화면은 폭이 좁아 전체를 담으면 너무 작다 → 전기로~연주 구간만, 라벨은 숨김
+      const mo = m && i === 0, t = mo ? [-3, 2, 0] : s.t;
+      labelsOff = mo;
+      gsap.to(cur, { tx: t[0], ty: t[1], tz: t[2], size: mo ? 66 : s.size * (m ? 1.6 : 1), fx: m ? 0.5 : (s.fx || 0.64), fy: m ? 0.3 : (s.fy || 0.5), duration: 1.4, ease: 'power3.inOut' });
       L.forEach(l => l.el.classList.toggle('dim', i > 0 && l.step !== i));
       const cue = { 1: ['bucket', 14, 0.08], 2: ['ladle', 22, 0.035], 4: ['ladle', 22, 0.265], 5: ['ladle', 22, 0.47], 6: ['chg', 16, 0.15] }[i];
       if (cue && !reduce) { const [k, T, want] = cue, now = ((clock.getElapsedTime() + phase[k]) % T) / T; phase[k] += ((want - now + 1) % 1) * T; }
@@ -753,7 +756,7 @@
         if (!l.half) l.half = l.el.offsetWidth / 2;
         const x = Math.min(w - l.half - 8, Math.max(l.half + 8, (v.x * 0.5 + 0.5) * w)), y = (-v.y * 0.5 + 0.5) * h + (l.dy || 0);
         // 왼쪽(모바일은 아래쪽) 설명 문구 영역에 들어간 라벨은 숨긴다
-        l.el.style.opacity = (mob ? y > h * 0.56 : x - l.half < w * 0.36) ? '0' : '';
+        l.el.style.opacity = (labelsOff || (mob ? y > h * 0.56 : x - l.half < w * 0.36)) ? '0' : '';
         l.el.style.transform = `translate(${x}px,${y}px) translate(-50%,-100%)`;
         l.el.style.visibility = (v.x < -1.1 || v.x > 1.1 || v.y < -1.1 || v.y > 1.1) ? 'hidden' : 'visible';
       });
