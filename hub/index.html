@@ -89,20 +89,27 @@ h2{font-size:clamp(32px,3.6vw,56px);font-weight:800;letter-spacing:-.045em;line-
   </section>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/utils/BufferGeometryUtils.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/environments/RoomEnvironment.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="/hub/js/steel-line.js"></script>
-<script src="/hub/js/glove-line.js"></script>
 <script>
-const mob = innerWidth < 769;
-// 원자재: 전기로 출강 → LF → 연주가 한 화면에 들어오게
-SteelLine.mount(document.getElementById('glRaw'), null, { view: mob ? { t: [-6, 3, -2], size: 15, fx: 0.5, fy: 0.42 } : { t: [-8, 3.5, -2], size: 15, fx: 0.62, fy: 0.5 } });
-// 글러브: 응고제 → 니트릴 → 경화 오븐 → 탈형 → 포장까지 한 줄로 (모바일은 좁아서 천천히 흐른다)
-const glove = GloveLine.mount(document.getElementById('glGlove'), { view: mob ? { t: [6, 1.8, 1.2], size: 9, fx: 0.5, fy: 0.42 } : { t: [2.5, 1.8, 0.8], size: 9, fx: 0.6, fy: 0.42 }, drift: mob ? 3 : 0 });
-document.querySelector('.glove').addEventListener('mouseenter', () => glove.setSpeed(1.8));
-document.querySelector('.glove').addEventListener('mouseleave', () => glove.setSpeed(1));
+// 모바일은 3D 대신 사진 한 장씩 (가볍고 화질이 좋다)
+const mob = matchMedia('(max-width: 768px)').matches;
+const loadScript = src => new Promise((ok, fail) => { const el = document.createElement('script'); el.src = src; el.onload = ok; el.onerror = fail; document.head.appendChild(el); });
+if (mob) {
+  document.getElementById('glRaw').style.background = '#000 url(/hub/img/m-raw.jpg) center/cover';
+  document.getElementById('glGlove').style.background = '#000 url(/hub/img/m-glove.jpg) center/cover';
+} else {
+  const T = 'https://cdn.jsdelivr.net/npm/three@0.147.0/';
+  loadScript(T + 'build/three.min.js')
+    .then(() => Promise.all([T + 'examples/js/utils/BufferGeometryUtils.js', T + 'examples/js/environments/RoomEnvironment.js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'].map(loadScript)))
+    .then(() => Promise.all(['/hub/js/steel-line.js', '/hub/js/glove-line.js'].map(loadScript)))
+    .then(() => {
+      // 원자재: 원료 야적 → 전기로 → LF → 집진이 가로 띠에 들어오게
+      SteelLine.mount(document.getElementById('glRaw'), null, { view: { t: [-8, 3.5, -2], size: 15, fx: 0.62, fy: 0.5 } });
+      // 글러브: 응고제 → 니트릴 → 경화 오븐 → 탈형 → 포장까지 한 줄로
+      const glove = GloveLine.mount(document.getElementById('glGlove'), { view: { t: [2.5, 1.8, 0.8], size: 9, fx: 0.6, fy: 0.42 } });
+      document.querySelector('.glove').addEventListener('mouseenter', () => glove.setSpeed(1.8));
+      document.querySelector('.glove').addEventListener('mouseleave', () => glove.setSpeed(1));
+    });
+}
 
 document.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); location.href = b.dataset.go; }));
 document.querySelectorAll('.panel').forEach(p => p.addEventListener('click', () => { location.href = p.dataset.href; }));
