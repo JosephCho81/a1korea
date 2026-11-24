@@ -6,6 +6,13 @@
   if (!video) return;
   var btn = box.querySelector('.lv-btn');
 
+  /* 앞부분(0~start초)은 회사 로고 인트로 — 제품 상자가 나오는 지점부터 재생하고, 반복도 그 지점으로 */
+  var start = parseFloat(video.dataset.start) || 0;
+  function toStart() { if (video.currentTime < start) video.currentTime = start; }
+  video.addEventListener('loadedmetadata', toStart);
+  video.addEventListener('play', toStart);
+  video.addEventListener('ended', function () { video.currentTime = start; video.play(); });
+
   var desktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var wanted = desktop && !reduced;
