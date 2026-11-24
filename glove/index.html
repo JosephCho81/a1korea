@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Glovetree — 식품용 니트릴 · 라텍스 장갑</title>
-<meta name="description" content="천연고무 단백질이 없는 니트릴 장갑. 100% 무분말 · 의료용 기준 · 니트릴 92% · 식품용. 리뷰 36,332개 · 평점 4.73, 글러브트리.">
+<meta name="description" content="깨끗함은 보이지 않는 데서 시작됩니다. 가루 · 천연고무 단백질 · PVC를 넣지 않은 식품용 니트릴 장갑, 글러브트리.">
 <meta property="og:title" content="Glovetree — 식품용 니트릴 · 라텍스 장갑">
-<meta property="og:description" content="라텍스 알러지의 원인인 천연고무 단백질이 없습니다 · 100% 무분말 · 의료용 기준 · 니트릴 92%">
+<meta property="og:description" content="깨끗함은 보이지 않는 데서 시작됩니다 · 100% 무분말 · 식품용 · 니트릴 92% 이상">
 <meta property="og:image" content="img/hero-model.jpg">
 <meta property="og:type" content="website">
+<meta name="theme-color" content="#1747E6">
 <link rel="icon" href="img/a1-logo.jpg">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="css/base.css">
@@ -20,471 +21,166 @@
 </head>
 <body>
 
-<!-- TOPBAR -->
-<div class="topbar">
-  <div class="topbar-in">
-    <span>㈜한국에이원 소모품 사업부 · 니트릴/라텍스 장갑 공식 유통</span>
-    <div class="topbar-r">
-      <a href="https://www.a1kor.com">사업부 허브</a>
-      <i>|</i>
-      <a href="https://material.a1kor.com">원자재 사업부</a>
-    </div>
-  </div>
-</div>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-in">
-    <a class="nav-logo" href="#top">
-      <img src="img/a1-logo.jpg" alt="㈜한국에이원">
-      <b>Glove<span>tree</span></b>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#guide">선택 가이드</a></li>
-      <li><a href="#lineup">라인업</a></li>
-      <li><a href="#compare">소재 비교</a></li>
-      <li><a href="#size">사이즈</a></li>
-      <li><a href="#use">사용 장면</a></li>
-      <li><a href="#faq">FAQ</a></li>
-    </ul>
-    <div class="nav-r">
-      <a class="btn btn-primary btn-store" href="https://smartstore.naver.com/c2winternational" target="_blank" rel="noopener noreferrer" aria-label="네이버 스마트스토어에서 구매">구매하기 <span aria-hidden="true">↗</span></a>
-      <button class="hamb" id="hamb" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
-    </div>
+<!-- NAV — 첫 화면(파랑) 위에선 흰 글씨, 지나면 흰 바탕 (nav.js가 .solid 토글) -->
+<nav id="nav">
+  <a class="nav-logo" href="#top"><img src="img/a1-logo.jpg" alt="㈜한국에이원"><b>Glovetree</b></a>
+  <ul class="nav-links">
+    <li><a href="#minus">덜어낸 것</a></li>
+    <li><a href="#proof">품질</a></li>
+    <li><a href="#lineup">라인업</a></li>
+    <li><a href="#size">사이즈</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li class="drawer-only"><a href="https://www.a1kor.com">사업부 허브</a></li>
+    <li class="drawer-only"><a href="https://material.a1kor.com">원자재 사업부</a></li>
+  </ul>
+  <div class="nav-r">
+    <a class="buy" href="https://smartstore.naver.com/c2winternational" target="_blank" rel="noopener noreferrer" aria-label="네이버 스마트스토어에서 구매">구매하기 <span aria-hidden="true">↗</span></a>
+    <button class="hamb" id="hamb" type="button" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <!-- HERO -->
-<header id="top">
-  <div class="hero-media">
-    <img src="img/hero-model.jpg" alt="파란 니트릴 장갑을 낀 손을 들어 보이는 모습" fetchpriority="high" width="1672" height="941">
-  </div>
-  <div class="hero-copy">
-    <p class="eyebrow">GLOVETREE · 식품용 일회용 장갑</p>
-    <h1>피부가 예민할수록<br><em>니트릴</em>입니다</h1>
-    <p class="lead">
-      라텍스 알러지의 원인인 천연고무 단백질이 없습니다<br>
-      <b>100% 무분말 · 의료용 기준 · 식품용</b>
-    </p>
-    <div class="hero-pills">
-      <span class="pill">의료용 기준</span>
-      <span class="pill">니트릴 92%</span>
-      <span class="pill">파우더프리</span>
-      <span class="pill">식품용</span>
-      <span class="pill">당일발송</span>
-    </div>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="https://smartstore.naver.com/c2winternational" target="_blank" rel="noopener noreferrer">네이버 스마트스토어에서 구매 <span aria-hidden="true">↗</span></a>
-    </div>
+<header class="hero" id="top">
+  <p class="hero-k">GLOVETREE · 식품용 일회용 장갑</p>
+  <h1 class="mega"><span class="l"><span>깨끗함은</span></span><span class="l"><span>보이지 않는 데서</span></span><span class="l"><span>시작됩니다.</span></span></h1>
+  <div class="hero-foot">
+    <p>가루도, 천연고무 단백질도, PVC도 넣지 않은<br>식품용 니트릴 장갑.</p>
+    <a class="hero-buy" href="https://smartstore.naver.com/c2winternational" target="_blank" rel="noopener noreferrer">스마트스토어에서 구매 <span aria-hidden="true">↗</span></a>
   </div>
 </header>
 
-<!-- 1. 왜 신경 써야 하나 -->
-<section id="why" class="alt">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">WHY IT MATTERS</p>
-      <h2>화장품만큼 꼼꼼히 골라야 할 물건입니다</h2>
-    </div>
-    <div class="talk-split">
-      <div class="talk rv">
-        <p>화장품 고르실 때는 성분을 하나하나 확인하시잖아요. 장갑은 하루에도 수십 번 끼고 벗으며, 그 내내 맨손에 닿아 있습니다. 성분부터 따져 볼 만한 이유입니다.</p>
-        <p>글러브트리는 손에 닿는 면에 가루를 쓰지 않습니다. 벗어도 하얀 가루가 남지 않고, 천연고무를 쓰지 않아 고무 알레르기 걱정도 없습니다.</p>
-      </div>
-      <div class="rv">
-        <img src="img/hand-glove.jpg" alt="맨손으로 니트릴 장갑을 집어 드는 모습" loading="lazy" width="640" height="360">
-      </div>
-    </div>
-    <div class="empathy rv" style="margin-top:48px;">
-      <p class="dim">장갑에서 떨어진 가루는 손에만 남는 게 아닙니다.</p>
-      <p class="hi" style="margin-top:14px;">그 손으로 버무린 음식은 <em>손님이 드십니다.</em></p>
-    </div>
+<div class="marq" aria-hidden="true"><div>
+  <span>100% 무분말</span><i>✕</i><span>식품용</span><i>✕</i><span>니트릴 92% 이상</span><i>✕</i><span>병원 검사용과 같은 품질 기준</span><i>✕</i><span>말레이시아 생산</span><i>✕</i>
+  <span>100% 무분말</span><i>✕</i><span>식품용</span><i>✕</i><span>니트릴 92% 이상</span><i>✕</i><span>병원 검사용과 같은 품질 기준</span><i>✕</i><span>말레이시아 생산</span><i>✕</i>
+</div></div>
+
+<!-- 덜어낸 것 -->
+<section class="minus" id="minus">
+  <p class="k">LEFT OUT</p>
+  <h2>음식에 닿는 것은 덜어낼수록 좋습니다.</h2>
+  <ul class="strike">
+    <li class="rv"><s class="mega">가루</s><span>벗어도 손에, 음식에 하얀 가루가 남지 않습니다. 100% 무분말.</span></li>
+    <li class="rv"><s class="mega">천연고무 단백질</s><span>라텍스 알레르기의 원인 성분이 니트릴에는 없습니다.</span></li>
+    <li class="rv"><s class="mega">PVC</s><span>값싼 재료를 섞지 않고 니트릴로 만듭니다.</span></li>
+  </ul>
+</section>
+
+<!-- 품질 근거 -->
+<section class="proof" id="proof">
+  <p class="k">PROOF</p>
+  <h2>좋은 장갑은 성분표부터 깨끗합니다.</h2>
+  <div class="row rv"><strong class="mega">1~2<small>/100</small></strong><p>흠 있는 장갑은 백 장에 한두 장까지만 내보냅니다. 식품용인데 병원 검사용과 같은 기준입니다.</p></div>
+  <div class="row rv"><strong class="mega">92<small>%</small></strong><p>니트릴 함량 최소 92%. 남는 자리를 싼 재료로 채우지 않았습니다.</p></div>
+  <div class="row rv"><strong class="mega">×6</strong><p>잘라서 당기면 원래 길이의 여섯 배까지 늘어납니다. 얇은데 질깁니다.</p></div>
+  <p class="made rv">말레이시아 Hartalega 공장에서 만들고, 일부러 뜨거운 곳에 두어 삭힌 뒤에도 새 장갑 시험을 통과한 것만 내보냅니다.</p>
+</section>
+
+<!-- 오트밀 -->
+<section class="oat" id="oatmeal">
+  <figure class="oat-pic"><img src="img/oat-detail.jpg" alt="오트밀 장갑 상자와 귀리 낟알" loading="lazy" width="1100" height="788"></figure>
+  <div class="oat-txt rv">
+    <p class="k">COATS · COLLOIDAL OATMEAL SYSTEM</p>
+    <h2 class="mega">귀리 한 겹.</h2>
+    <p>손에 닿는 안쪽 면에 귀리 코팅을 입혀 부드럽게 만들었습니다. 오래 껴도 덜 답답합니다.</p>
+    <dl><dt>무게</dt><dd>3.2g · 라인업 중 가장 가벼움</dd><dt>색상</dt><dd>오트밀 / 던블루</dd><dt>사이즈</dt><dd>S · M · L</dd><dt>구성</dt><dd>100매 / 박스</dd></dl>
   </div>
 </section>
 
-<!-- 2. 선택 가이드 -->
-<section id="guide">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">SELECT GUIDE</p>
-      <h2>어떤 장갑을 고르시겠어요?</h2>
-      <p>용도만 정하면 답이 나옵니다.</p>
-    </div>
-    <div class="q-box rv">
-      <div class="q-title">Q1. 어디에 쓰시나요?</div>
-      <div class="q-table">
-        <div class="q-row"><div>용도</div><div>추천</div><div>이유</div></div>
-        <div class="q-row"><b>요리 · 베이킹</b><em>니트릴 화이트 / 블랙</em><div>유분에 강하고 냄새가 배지 않음</div></div>
-        <div class="q-row"><b>청소 · 세차</b><em>니트릴 블루</em><div>세제 · 유분에 강한 니트릴 소재</div></div>
-        <div class="q-row"><b>미용 · 네일</b><em>라텍스 아이보리</em><div>밀착감과 손끝 감각이 뛰어남</div></div>
-        <div class="q-row"><b>환경을 고려한다면</b><em>니트릴 블루 (생분해)</em><div>생분해 기술 적용</div></div>
-        <div class="q-row"><b>색이 신경 쓰인다면</b><em>니트릴 블랙 / 오트밀</em><div>오염이 눈에 띄지 않음</div></div>
-      </div>
-    </div>
-    <div class="q-links rv">
-      <a class="q-link" href="#compare">
-        <b>Q2. 니트릴과 라텍스, 뭐가 다른가요?</b>
-        <span>소재 비교표 보기 ↓</span>
-      </a>
-      <a class="q-link" href="#size">
-        <b>Q3. 내 사이즈는?</b>
-        <span>사이즈 가이드 보기 ↓</span>
-      </a>
-    </div>
-    <div class="q-cta rv">
-      <a class="btn btn-primary btn-lg" href="#lineup">내 용도에 맞는 장갑 바로 보기</a>
-    </div>
+<!-- 손님 · 사용 장면 -->
+<section class="guest" id="use">
+  <div class="guest-top">
+    <img src="img/use-plating.jpg" alt="장갑 낀 손으로 샐러드 위에 수박을 올리는 모습" loading="lazy" width="800" height="545">
+    <h2 class="mega rv">손님 입에<br>들어가기 전,<br><em>마지막으로</em><br>닿는 것.</h2>
+  </div>
+  <div class="uses">
+    <figure class="rv"><img src="img/use-kimchi.jpg" alt="니트릴 장갑을 끼고 김치를 버무리는 모습" loading="lazy" width="800" height="545"><figcaption><b>김치 버무리기</b>양념이 손에 배지 않습니다</figcaption></figure>
+    <figure class="rv"><img src="img/use-veg.jpg" alt="니트릴 장갑을 끼고 파프리카를 손질하는 모습" loading="lazy" width="800" height="545"><figcaption><b>채소 손질</b>칼질할 때도 미끄러지지 않습니다</figcaption></figure>
+    <figure class="rv"><img src="img/use-fruit.jpg" alt="블랙 니트릴 장갑을 끼고 수박을 자르는 모습" loading="lazy" width="800" height="545"><figcaption><b>과일 커팅</b>블랙은 오염이 눈에 띄지 않습니다</figcaption></figure>
   </div>
 </section>
 
-<!-- 3. 어디서 만든 장갑인가 -->
-<section class="alt">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">MADE BY</p>
-      <h2>어디서 만든 장갑인지 다 적어뒀습니다</h2>
+<!-- 라인업 · 소재 비교 -->
+<section class="line" id="lineup">
+  <p class="k">LINE UP · 6</p>
+  <h2>여섯 가지 색, 같은 기준.</h2>
+  <div class="lineup-media rv">
+    <video src="media/lineup.mp4" poster="img/hero-boxes.jpg" muted loop playsinline preload="none" aria-label="글러브트리 장갑 전 라인업 소개 영상"></video>
+    <button class="lv-btn" type="button" aria-label="영상 재생 / 일시정지"><span aria-hidden="true">▶</span></button>
+  </div>
+  <div class="prods">
+    <a class="prod" style="--c:#8FA3E0" href="https://smartstore.naver.com/c2winternational" target="_blank" rel="noopener noreferrer"><span class="n">01</span><h3>블루</h3><span class="spec">Glovetree plus · S · 3.5g</span><img src="img/p02-blue-heavy.jpg" alt="" loading="lazy" width="900" height="571"></a>
+    <a class="prod dk" style="--c:#1A1A1C" href="https://smartstore.naver.com/c2winternational" target="_blank" rel="noopener noreferrer"><span class="n">02</span><h3>블랙</h3><span class="spec">Glovetree · S·M·L · 3.5g</span><img src="img/p03-black.jpg" alt="" loading="lazy" width="900" height="613"></a>
+    <a class="prod" style="--c:#F2B705" href="https://smartstore.naver.com/c2winternational" target="_blank" rel="noopener noreferrer"><span class="n">03</span><h3>오트밀</h3><span class="spec">Glovetree · S·M·L · 3.2g</span><img src="img/p04-oatmeal.jpg" alt="" loading="lazy" width="900" height="620"></a>
+    <a class="prod" style="--c:#BFD8C9" href="https://smartstore.naver.com/c2winternational" target="_blank" rel="noopener noreferrer"><span class="n">04</span><h3>블루 생분해</h3><span class="spec">Glovetree plus · S·M·L · 3.5g</span><img src="img/p05-blue-bdg.jpg" alt="" loading="lazy" width="900" height="610"></a>
+    <a class="prod" style="--c:#EDEDEA" href="https://smartstore.naver.com/c2winternational" target="_blank" rel="noopener noreferrer"><span class="n">05</span><h3>화이트</h3><span class="spec">Glovetree plus · S·M·L · 3.5g</span><img src="img/p01-white.jpg" alt="" loading="lazy" width="900" height="675"></a>
+    <a class="prod" style="--c:#EADCC3" href="https://smartstore.naver.com/c2winternational" target="_blank" rel="noopener noreferrer"><span class="n">06</span><h3>라텍스</h3><span class="spec">C2 GLOVE · S·M·L · 5.5g</span><img src="img/p06-latex.jpg" alt="" loading="lazy" width="900" height="671"></a>
+  </div>
+  <p class="line-note">전 라인업 100매 · 무분말 · 식품용. 니트릴 제품은 색상만 다르고 재질 · 규격이 같습니다.</p>
+
+  <div class="cmp rv" id="compare">
+    <h3>니트릴과 라텍스, 뭐가 다른가요?</h3>
+    <div class="cmp-t" role="table" aria-label="니트릴과 라텍스 비교">
+      <div class="cmp-row h" role="row"><div role="columnheader">항목</div><div role="columnheader">니트릴</div><div role="columnheader">라텍스</div></div>
+      <div class="cmp-row" role="row"><div role="cell">알러지</div><div role="cell">없음</div><div role="cell">천연고무 단백질 알러지 가능</div></div>
+      <div class="cmp-row" role="row"><div role="cell">유분 · 세제</div><div role="cell">강함</div><div role="cell">상대적으로 약함</div></div>
+      <div class="cmp-row" role="row"><div role="cell">신축성 · 착용감</div><div role="cell">보통</div><div role="cell">뛰어남</div></div>
+      <div class="cmp-row" role="row"><div role="cell">손끝 감각</div><div role="cell">보통</div><div role="cell">예민함</div></div>
+      <div class="cmp-row" role="row"><div role="cell">개당 무게</div><div role="cell">3.2~3.5g</div><div role="cell">5.5g</div></div>
+      <div class="cmp-row" role="row"><div role="cell">추천 용도</div><div role="cell">요리 · 청소 · 세차</div><div role="cell">미용 · 정밀작업</div></div>
     </div>
-    <div class="talk rv" style="margin-bottom:38px;">
-      <p>글러브트리는 말레이시아 하르텔레가 공장에서 만듭니다. 세계에서 니트릴 장갑을 제일 많이 만드는 회사고요. 제조사 이름과 만든 나라, 어떤 시험을 거쳤는지까지 전부 적어뒀습니다. 값싼 장갑 상자에는 이런 게 안 적혀 있습니다.</p>
-    </div>
-    <div class="badges">
-      <div class="badge rv"><b>의료용 기준</b><p>흠 있는 장갑이 백 장에<br>한두 장을 넘으면 안 내보냅니다</p></div>
-      <div class="badge rv"><b>Hartalega</b><p>니트릴 장갑을 세계에서<br>제일 많이 만드는 회사</p></div>
-      <div class="badge rv"><b>36,332</b><p>평점 4.73<br>4점 이상 93%</p></div>
-    </div>
-    <div class="badge-media rv">
-      <img src="img/oat-detail.jpg" alt="글러브트리 오트밀 니트릴 장갑 박스와 귀리" loading="lazy" width="1100" height="788">
-    </div>
+    <p>라텍스 알러지가 있으시면 <b>니트릴</b>을 선택하세요.</p>
   </div>
 </section>
 
-<!-- 4. 문제 제기 -->
-<section>
-  <div class="wrap">
-    <div class="sec-head rv">
-      <h2>장갑 때문에 짜증 나본 적 있으시죠</h2>
-    </div>
-    <div class="prob">
-      <div class="prob-item rv"><b>01</b><p>손가락 끝이 먼저 찢어집니다</p></div>
-      <div class="prob-item rv"><b>02</b><p>벗고 나면 하얀 가루가 남습니다</p></div>
-      <div class="prob-item rv"><b>03</b><p>고무 냄새가 음식에 뱁니다</p></div>
-      <div class="prob-item rv"><b>04</b><p>S를 샀는데 손이 들어가지 않습니다</p></div>
-    </div>
-    <h3 class="talk-h rv">한 장 아끼려다 두 장 씁니다</h3>
-    <div class="talk rv">
-      <p>싼 장갑 쓰다 보면 손끝부터 찢어집니다. 그러면 벗고 새로 껴야 하는데, 그게 하루에 몇 번씩 쌓이면 결국 두 장 쓰는 셈이 됩니다. 한 장에 이삼십 원 아끼려다 두 장 쓰면 남는 게 없고요. 바쁠 때 젖은 손으로 다시 끼느라 버리는 시간까지 생각하면 더 그렇습니다.</p>
-    </div>
+<!-- 사이즈 -->
+<section class="size" id="size">
+  <p class="k">SIZE</p>
+  <h2>손바닥 너비로 고르세요.</h2>
+  <div class="sizes">
+    <div class="rv"><b class="mega">S</b><span>84mm</span><em>± 3mm</em></div>
+    <div class="rv"><b class="mega">M</b><span>94mm</span><em>± 3mm</em></div>
+    <div class="rv"><b class="mega">L</b><span>105mm</span><em>± 3mm</em></div>
+  </div>
+  <p class="size-tip rv">“S는 딱 맞지만 끼고 뺄 때 불편해서 M이 편하다”는 후기가 많습니다. 착탈이 잦으시면 <b>한 치수 크게</b> 고르세요.<br><small>※ 손 두께에 따라 차이가 있을 수 있습니다.</small></p>
+</section>
+
+<!-- FAQ -->
+<section class="faqsec" id="faq">
+  <p class="k">FAQ</p>
+  <h2>자주 묻는 질문</h2>
+  <div class="faqs">
+    <div class="faq"><button class="faq-q" type="button">라텍스 알러지가 있어요</button><div class="faq-a"><p>니트릴 제품을 선택하세요. 천연고무 단백질이 들어 있지 않습니다.</p></div></div>
+    <div class="faq"><button class="faq-q" type="button">음식에 직접 닿아도 되나요</button><div class="faq-a"><p>식품용 제품입니다. 박스에 식품용 도안이 인쇄되어 있습니다.</p></div></div>
+    <div class="faq"><button class="faq-q" type="button">사용기한이 있나요</button><div class="faq-a"><p>박스에 제조일과 사용기간이 표기되어 있습니다.</p></div></div>
+    <div class="faq"><button class="faq-q" type="button">씻어서 재사용 가능한가요</button><div class="faq-a"><p>1회용 제품입니다. 재사용하지 마세요.</p></div></div>
+    <div class="faq"><button class="faq-q" type="button">어떻게 보관하나요</button><div class="faq-a"><p>5~40°C, 직사광선과 습기를 피해 보관하세요.</p></div></div>
+    <div class="faq"><button class="faq-q" type="button">사이즈 교환 되나요</button><div class="faq-a"><p>미개봉 상태에서 교환 가능합니다.</p></div></div>
+    <div class="faq"><button class="faq-q" type="button">색상별 재질이 다른가요</button><div class="faq-a"><p>니트릴 제품은 색상만 다르고 재질 · 규격은 같습니다.</p></div></div>
+    <div class="faq"><button class="faq-q" type="button">대량 구매 할인 있나요</button><div class="faq-a"><p>카톤 단위로 문의 주시면 안내드립니다. <a href="mailto:a1@a1kor.com">a1@a1kor.com</a></p></div></div>
   </div>
 </section>
 
-<!-- 5. 백 장 중 몇 장 -->
-<section class="alt">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">QUALITY STANDARD</p>
-      <h2>흠 있는 장갑을 몇 장까지 내보내느냐가 다릅니다</h2>
-    </div>
-    <div class="talk rv" style="margin-bottom:38px;">
-      <p>장갑은 아무리 잘 만들어도 백 장에 몇 장은 흠이 있습니다. 어느 공장이나 마찬가지고요. 다른 건 그 흠 있는 장갑을 몇 장까지 그냥 내보내느냐입니다. 값싼 산업용은 백 장에 네 장까지 흠이 있어도 그대로 나갑니다. 글러브트리는 한두 장을 넘으면 그 묶음을 통째로 내보내지 않습니다. 병원에서 쓰는 검사용 장갑에 적용하는 선이거든요.</p>
-    </div>
-    <div class="aql rv">
-      <div><b>백 장 중</b><span>흠이 있어도 그냥 나가는 장수</span></div>
-      <div class="on"><b>한두 장</b><span>글러브트리 · 병원 검사용</span></div>
-      <div><b>두세 장</b><span>일반 · 산업용</span></div>
-      <div><b>네 장</b><span>값싼 산업용</span></div>
-    </div>
-    <p class="aql-note rv">글러브트리는 <b>식품용인데도 병원 검사용과 같은 선</b>을 지킵니다.</p>
-    <div class="split">
-      <div class="split-txt rv">
-        <div class="k">니트릴 함량</div>
-        <div class="v">최소 92%</div>
-        <p>싼 재료로 채우지 않았습니다. PVC를 섞지 않고 니트릴로 만듭니다.</p>
-      </div>
-      <div class="split-img rv">
-        <img src="img/box-black.jpg" alt="글러브트리 The Black 니트릴 장갑 박스" loading="lazy" width="900" height="620">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 6. 오래 둬도 삭지 않는다 -->
-<section id="keep">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">AGING TEST</p>
-      <h2>창고에 오래 둔 장갑도 삭지 않습니다</h2>
-    </div>
-    <div class="talk rv">
-      <p>고무는 오래 두면 삭습니다. 서랍에 넣어둔 고무줄이 당기면 툭 끊어지는 것처럼요. 장갑도 똑같은데, 주방은 덥고 습해서 더 빨리 상합니다.</p>
-      <p>그래서 글러브트리는 만든 장갑을 일부러 뜨거운 곳에 넣어두고, 삭은 다음에도 튼튼한지 확인합니다. 그걸 통과한 것만 내보내고요.</p>
-    </div>
-    <div class="empathy rv" style="margin-top:44px;">
-      <p class="hi">삭은 뒤에 다시 재봐도,<br><em>새 장갑이 받아야 하는 시험을 그대로 통과합니다.</em></p>
-    </div>
-  </div>
-</section>
-
-<!-- 7. 손끝 감각 -->
-<section class="alt">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">THIN BUT STRONG</p>
-      <h2>손끝 감각을 포기하지 않아도 됩니다</h2>
-    </div>
-    <div class="talk-split">
-      <div class="talk rv">
-        <p>두꺼운 장갑은 잘 안 찢어지는 대신 손끝 감각이 없어집니다. 얇은 장갑은 손은 편한데 금방 찢어지고요. 그래서 보통은 둘 중 하나를 포기합니다.</p>
-        <p>글러브트리는 얇게 만들면서 잘 안 찢어지게 하는 쪽에 돈을 썼습니다. 두껍게 만들어서 얻은 튼튼함이 아닙니다. 손끝에는 미끄럼 방지 처리가 되어 있고, 장갑을 낀 채로 휴대폰도 만져집니다.</p>
-      </div>
-      <div class="rv">
-        <img src="img/touch-phone.jpg" alt="니트릴 장갑을 낀 채로 휴대폰 화면을 만지는 모습" loading="lazy" width="640" height="360">
-      </div>
-    </div>
-    <div class="empathy rv" style="margin-top:44px;">
-      <p class="dim">장갑을 잘라서 양쪽으로 당겨보면 원래 길이의 여섯 배까지 늘어납니다.<br>손바닥만 한 조각이 팔 길이만큼 늘어날 때까지 안 끊어진다는 뜻입니다.</p>
-    </div>
-    <div class="feat-grid" style="margin-top:44px;">
-      <div class="feat rv"><b>파우더프리</b><p>100% 무분말</p></div>
-      <div class="feat rv"><b>양손</b><p>좌우 구분 없이 낍니다</p></div>
-      <div class="feat rv"><b>재사용 금지</b><p>한 번 쓰고 버리는 제품</p></div>
-      <div class="feat rv"><b>보관</b><p>5~40°C, 직사광선과 습기를 피해</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- 8. 오트밀 COATS -->
-<section id="oatmeal">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">COATS · COLLOIDAL OATMEAL SYSTEM</p>
-      <h2>귀리를 입힌 장갑</h2>
-    </div>
-    <div class="oat-grid">
-      <div class="oat-card rv">
-        <p>오트밀 제품은 <b>COATS(Colloidal Oatmeal System)</b> 내부 코팅을 적용했습니다. 손에 닿는 안쪽 면을 부드럽게 만들어, 장시간 착용에도 덜 답답합니다.</p>
-        <div class="oat-w">
-          <b>3.2g</b>
-          <span>개당 무게 · 라인업 중 가장 가벼움</span>
-        </div>
-      </div>
-      <div class="rv">
-        <img src="img/quality-box.jpg" alt="박스에 흩뿌려진 귀리와 COATS 인쇄부 클로즈업" loading="lazy" width="1200" height="675">
-      </div>
-    </div>
-    <div class="oat-spec">
-      <div class="rv"><b>색상</b><span>오트밀 / 던블루</span></div>
-      <div class="rv"><b>사이즈</b><span>S · M · L</span></div>
-      <div class="rv"><b>구성</b><span>100매 / 박스</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- 9. 라인업 6종 -->
-<section id="lineup" class="alt">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">LINE UP</p>
-      <h2>식품용 라인업 6종</h2>
-      <p>색상만 다르고 재질 · 규격은 동일합니다.</p>
-    </div>
-    <div class="lineup-media rv">
-      <video src="media/lineup.mp4" poster="img/hero-boxes.jpg" muted loop playsinline preload="none" aria-label="한국에이원 장갑 전 라인업 소개 영상"></video>
-      <button type="button" class="lv-btn" aria-label="영상 재생"></button>
-    </div>
-    <div class="lineup">
-      <div class="p-card rv">
-        <figure><img src="img/p02-blue-heavy.jpg" alt="니트릴 장갑 블루 착용 컷" loading="lazy" width="900" height="571"></figure>
-        <div class="p-body">
-          <div class="p-no">01 · Glovetree plus</div>
-          <h3>니트릴 장갑 (블루)</h3>
-          <div class="p-spec">SIZE S &nbsp;|&nbsp; 100매</div>
-          <div class="p-tag"><span>무분말</span><span>식품용</span><span>3.5g</span></div>
-        </div>
-      </div>
-      <div class="p-card rv">
-        <figure><img src="img/p03-black.jpg" alt="니트릴 장갑 블랙 The Black 박스" loading="lazy" width="900" height="613"></figure>
-        <div class="p-body">
-          <div class="p-no">02 · Glovetree</div>
-          <h3>니트릴 장갑 (블랙)</h3>
-          <div class="p-spec">SIZE S · M · L &nbsp;|&nbsp; 100매</div>
-          <div class="p-tag"><span>무분말</span><span>식품용</span><span>3.5g</span></div>
-        </div>
-      </div>
-      <div class="p-card rv">
-        <figure><img src="img/p04-oatmeal.jpg" alt="니트릴 장갑 오트밀 COATS 박스" loading="lazy" width="900" height="620"></figure>
-        <div class="p-body">
-          <div class="p-no">03 · Glovetree</div>
-          <h3>니트릴 장갑 (오트밀/던블루)</h3>
-          <div class="p-spec">SIZE S · M · L &nbsp;|&nbsp; 100매</div>
-          <div class="p-tag"><span>오트밀</span><span>식품용</span><span>3.2g</span></div>
-        </div>
-      </div>
-      <div class="p-card rv">
-        <figure><img src="img/p05-blue-bdg.jpg" alt="니트릴 장갑 블루 생분해 착용 컷" loading="lazy" width="900" height="610"></figure>
-        <div class="p-body">
-          <div class="p-no">04 · Glovetree plus</div>
-          <h3>니트릴 장갑 (블루/생분해)</h3>
-          <div class="p-spec">SIZE S · M · L &nbsp;|&nbsp; 100매</div>
-          <div class="p-tag"><span>무분말</span><span>식품용</span><span>3.5g</span></div>
-        </div>
-      </div>
-      <div class="p-card rv">
-        <figure><img src="img/p01-white.jpg" alt="니트릴 장갑 화이트 착용 컷" loading="lazy" width="900" height="675"></figure>
-        <div class="p-body">
-          <div class="p-no">05 · Glovetree plus</div>
-          <h3>니트릴 장갑 (화이트)</h3>
-          <div class="p-spec">SIZE S · M · L &nbsp;|&nbsp; 100매</div>
-          <div class="p-tag"><span>무분말</span><span>식품용</span><span>3.5g</span></div>
-        </div>
-      </div>
-      <div class="p-card rv">
-        <figure><img src="img/p06-latex.jpg" alt="C2 GLOVE 라텍스 장갑 아이보리 박스" loading="lazy" width="900" height="671"></figure>
-        <div class="p-body">
-          <div class="p-no">06 · C2 GLOVE</div>
-          <h3>라텍스 장갑 (아이보리)</h3>
-          <div class="p-spec">SIZE S · M · L &nbsp;|&nbsp; 100매</div>
-          <div class="p-tag"><span>무분말</span><span>식품용</span><span>5.5g</span></div>
-        </div>
-      </div>
-    </div>
-    <p class="lineup-note rv">전 라인업 무분말(파우더프리) · 식품용 제품입니다.</p>
-  </div>
-</section>
-
-<!-- 10. 소재 비교 -->
-<section id="compare">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">MATERIAL</p>
-      <h2>니트릴과 라텍스, 뭐가 다른가요?</h2>
-    </div>
-    <div class="cmp-media rv">
-      <img src="img/box-white.jpg" alt="글러브트리 니트릴 장갑 화이트 박스" loading="lazy" width="900" height="632">
-      <img src="img/p06-latex.jpg" alt="C2 GLOVE 라텍스 장갑 박스" loading="lazy" width="900" height="671">
-    </div>
-    <div class="cmp rv">
-      <div class="cmp-row"><div>항목</div><div>니트릴</div><div>라텍스</div></div>
-      <div class="cmp-row"><div class="k">알러지</div><div class="nit">없음</div><b>천연 고무 단백질 알러지 가능</b></div>
-      <div class="cmp-row"><div class="k">유분 · 세제</div><div class="nit">강함</div><b>상대적으로 약함</b></div>
-      <div class="cmp-row"><div class="k">신축성 · 착용감</div><div class="nit">보통</div><b>뛰어남</b></div>
-      <div class="cmp-row"><div class="k">손끝 감각</div><div class="nit">보통</div><b>예민함</b></div>
-      <div class="cmp-row"><div class="k">개당 무게</div><div class="nit">3.2~3.5g</div><b>5.5g</b></div>
-      <div class="cmp-row"><div class="k">추천 용도</div><div class="nit">요리 · 청소 · 세차</div><b>미용 · 정밀작업</b></div>
-    </div>
-    <p class="cmp-note rv">라텍스 알러지가 있으시면 <b>니트릴</b>을 선택하세요.</p>
-  </div>
-</section>
-
-<!-- 11. 사이즈 가이드 -->
-<section id="size" class="alt">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">SIZE GUIDE</p>
-      <h2>내 손에 꼭 맞는 사이즈를 찾아보세요</h2>
-      <p>손바닥 너비를 기준으로 고르시면 됩니다.</p>
-    </div>
-    <div class="sizes">
-      <div class="size rv"><b>S</b><span>84mm</span><em>± 3mm</em></div>
-      <div class="size rv"><b>M</b><span>94mm</span><em>± 3mm</em></div>
-      <div class="size rv"><b>L</b><span>105mm</span><em>± 3mm</em></div>
-    </div>
-    <p class="size-note rv">※ 손바닥 너비뿐 아니라 개인의 손 두께에 따라 차이가 있을 수 있습니다.</p>
-    <div class="tip rv">
-      <b>REVIEW TIP</b>
-      <p>“S는 딱 맞지만 끼고 뺄 때 불편해서 M이 편하다”는 후기가 많습니다. 착탈이 잦으시면 <em>한 치수 크게</em> 선택하세요.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 12. 사용 장면 -->
-<section id="use">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">IN THE KITCHEN</p>
-      <h2>주방에서 이렇게 씁니다</h2>
-    </div>
-    <div class="uses">
-      <div class="use rv">
-        <figure><img src="img/use-kimchi.jpg" alt="니트릴 장갑을 끼고 김치를 버무리는 모습" loading="lazy" width="800" height="545"></figure>
-        <div><b>김치 버무리기</b><p>양념이 손에 배지 않습니다</p></div>
-      </div>
-      <div class="use rv">
-        <figure><img src="img/use-veg.jpg" alt="니트릴 장갑을 끼고 파프리카를 손질하는 모습" loading="lazy" width="800" height="545"></figure>
-        <div><b>채소 손질</b><p>칼질할 때도 미끄러지지 않습니다</p></div>
-      </div>
-      <div class="use rv">
-        <figure><img src="img/use-fruit.jpg" alt="블랙 니트릴 장갑을 끼고 수박을 자르는 모습" loading="lazy" width="800" height="545"></figure>
-        <div><b>과일 커팅</b><p>블랙은 오염이 눈에 띄지 않습니다</p></div>
-      </div>
-      <div class="use rv">
-        <figure><img src="img/use-plating.jpg" alt="니트릴 장갑을 끼고 샐러드를 플레이팅하는 모습" loading="lazy" width="800" height="545"></figure>
-        <div><b>플레이팅</b><p>손끝 감각이 살아 있습니다</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- 13. FAQ -->
-<section id="faq" class="alt">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">FAQ</p>
-      <h2>자주 묻는 질문</h2>
-    </div>
-    <div class="faqs rv">
-      <div class="faq"><div class="faq-q">라텍스 알러지가 있어요</div><div class="faq-a"><p>니트릴 제품을 선택하세요. 천연 고무 단백질이 들어 있지 않습니다.</p></div></div>
-      <div class="faq"><div class="faq-q">음식에 직접 닿아도 되나요</div><div class="faq-a"><p>식품용 제품입니다. 박스에 식품용 도안이 인쇄되어 있습니다.</p></div></div>
-      <div class="faq"><div class="faq-q">사용기한이 있나요</div><div class="faq-a"><p>박스에 제조일과 사용기간이 표기되어 있습니다.</p></div></div>
-      <div class="faq"><div class="faq-q">씻어서 재사용 가능한가요</div><div class="faq-a"><p>1회용 제품입니다. 재사용하지 마세요.</p></div></div>
-      <div class="faq"><div class="faq-q">어떻게 보관하나요</div><div class="faq-a"><p>5~40°C, 직사광선과 습기를 피해 보관하세요.</p></div></div>
-      <div class="faq"><div class="faq-q">사이즈 교환 되나요</div><div class="faq-a"><p>미개봉 상태에서 교환 가능합니다.</p></div></div>
-      <div class="faq"><div class="faq-q">색상별 재질이 다른가요</div><div class="faq-a"><p>색상만 다르고 재질 · 규격은 동일합니다.</p></div></div>
-      <div class="faq"><div class="faq-q">대량 구매 할인 있나요</div><div class="faq-a"><p>카톤 단위 문의 주시면 안내드립니다.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- 14. CTA -->
+<!-- CTA -->
 <section class="cta">
-  <div class="wrap">
-    <h2 class="rv">36,332명이 선택한 장갑</h2>
-    <div class="cta-btn rv">
-      <a class="btn btn-onblue" href="https://smartstore.naver.com/c2winternational" target="_blank" rel="noopener noreferrer">네이버 스마트스토어에서 구매 <span aria-hidden="true">↗</span></a>
-    </div>
-    <p class="cta-fine rv">
-      판매사 ㈜한국에이원 · 소모품 사업부<br>
-      제조사 Hartalega NGC Sdn. Bhd. · 원산지 말레이시아<br>
-      식품용 제품 · 100% 무분말(파우더프리)
-    </p>
-  </div>
+  <h2 class="mega rv">가족 밥상에 닿는<br>마지막 한 겹.</h2>
+  <a class="go" href="https://smartstore.naver.com/c2winternational" target="_blank" rel="noopener noreferrer">네이버 스마트스토어에서 구매 <span aria-hidden="true">↗</span></a>
+  <p class="fine">스마트스토어 리뷰 3.6만 개 · 평점 4.73<br>판매사 ㈜한국에이원 소모품 사업부 · 제조사 Hartalega NGC Sdn. Bhd. · 원산지 말레이시아</p>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div>
-        <div class="foot-logo">
-          <b>Glove<span>tree</span></b>
-        </div>
-        <div class="foot-meta" style="margin-top:12px;">㈜한국에이원 소모품 사업부 공식 유통 브랜드</div>
-      </div>
-      <div class="foot-nav">
-        <a href="#guide">선택 가이드</a>
-        <a href="#lineup">라인업</a>
-        <a href="#compare">소재 비교</a>
-        <a href="#size">사이즈</a>
-        <a href="#faq">FAQ</a>
-        <a href="https://material.a1kor.com">원자재 사업부</a>
-      </div>
-    </div>
-    <div class="foot-meta">
-      사업자등록번호 555-81-00488 &nbsp;|&nbsp; 대표 최성호<br>
-      경기 김포시 고촌읍 은행영사정로157 &nbsp;|&nbsp; <a href="mailto:a1@a1kor.com">a1@a1kor.com</a><br>
-      © 2026 ㈜한국에이원 · Glovetree. All rights reserved.
+  <div class="foot-top">
+    <b class="foot-logo">Glovetree</b>
+    <div class="foot-nav">
+      <a href="#lineup">라인업</a><a href="#size">사이즈</a><a href="#faq">FAQ</a>
+      <a href="https://www.a1kor.com">사업부 허브</a><a href="https://material.a1kor.com">원자재 사업부</a>
     </div>
   </div>
+  <p class="foot-meta">
+    ㈜한국에이원 소모품 사업부 공식 유통 브랜드<br>
+    사업자등록번호 555-81-00488 &nbsp;|&nbsp; 대표 최성호<br>
+    경기 김포시 고촌읍 은행영사정로157 &nbsp;|&nbsp; <a href="mailto:a1@a1kor.com">a1@a1kor.com</a><br>
+    © 2026 ㈜한국에이원 · Glovetree. All rights reserved.
+  </p>
 </footer>
 
 <script src="js/nav.js"></script>

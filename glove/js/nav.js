@@ -1,10 +1,21 @@
-/* 모바일 햄버거 메뉴 · 페이지 내 앵커 이동 */
+/* 모바일 햄버거 메뉴 · 페이지 내 앵커 이동 · 첫 화면 지나면 흰 바탕 */
 var navLinks = document.querySelector('.nav-links');
+var navBar = document.getElementById('nav');
+var heroEl = document.getElementById('top');
+
+/* 파란 첫 화면 위에선 투명 · 흰 글씨, 벗어나거나 드로어가 열리면 흰 바탕 */
+function syncNav(){
+  var past = heroEl ? heroEl.getBoundingClientRect().bottom < 64 : true;
+  navBar.classList.toggle('solid', past || drawerOpen());
+}
+window.addEventListener('scroll', syncNav, { passive: true });
+window.addEventListener('resize', syncNav);
 
 function drawerOpen(){ return navLinks.classList.contains('open'); }
 
 function openDrawer(){
   navLinks.classList.add('open');
+  syncNav();
   /* 드로어를 히스토리 항목으로 — 메뉴를 연 뒤 뒤로가기는 사이트 이탈이 아니라 메뉴 닫기다 */
   history.pushState({drawer:1}, '', location.href);
 }
@@ -12,6 +23,7 @@ function openDrawer(){
 function closeDrawer(fromPop){
   if(!drawerOpen()) return;
   navLinks.classList.remove('open');
+  syncNav();
   if(fromPop !== true && history.state && history.state.drawer) history.back();
 }
 
@@ -36,7 +48,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     e.preventDefault();
 
     /* 드로어 안의 링크였다면 드로어 항목까지 여기서 함께 정리된다 */
-    if(drawerOpen()) navLinks.classList.remove('open');
+    if(drawerOpen()){ navLinks.classList.remove('open'); syncNav(); }
 
     target.scrollIntoView({
       behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
@@ -44,3 +56,5 @@ document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     history.replaceState(history.state && history.state.drawer ? null : history.state, '', hash);
   });
 });
+
+syncNav();

@@ -26,22 +26,23 @@
 - `js/data.js` — 품목 스펙 데이터(`PD`) · **품목 내용 수정은 여기만**
 - `media/` — 영상(1080p, crf27) · 포스터 · `img/` 품목 참고 사진 (Pexels). 원본은 `samples/media/raw`(git 제외)
 
-### glove/ (글러브트리 · 단일 랜딩)
-- `css/base.css` — **디자인 토큰** · 리셋
-- `css/nav.css` — 탑바 · 네비 · 햄버거 · `.nav-links.open` 드로어
-- `css/hero.css` — 섹션 공통 · 히어로 · 선택 가이드 · 배지
-- `css/content.css` — 문제제기 · AQL · 특징 · 오트밀 · 라인업 · 소재비교 · 사이즈 · 사용장면
-- `css/faq-footer.css` — FAQ · CTA · 푸터 · `.rv` 등장 애니메이션
-- `css/responsive.css` — 900px 이하
-- `js/nav.js` `js/faq.js` `js/reveal.js`
+### glove/ (글러브트리 · 단일 랜딩, 2026-11 개편: 코발트 단색 + 큰 글씨)
+- 순서: 첫 화면(깨끗함은…) → 띠 → 덜어낸 것(`#minus`) → 품질 숫자(`#proof`) → 오트밀 → 손님 · 사용 장면(`#use`) → 라인업 · 소재비교(`#lineup`) → 사이즈 → FAQ → CTA(노랑) → 푸터
+- 시안 A(색 라인업) · B(화보형)는 `samples/glove-a-color.html` `glove-b-editorial.html`에 보관
+- `css/base.css` — **디자인 토큰**(`--blue` `--yellow` `--oat` …) · 리셋 · `.mega` 큰 글씨 · `.rv` 등장
+- `css/nav.css` — 네비(첫 화면 위 투명 → 지나면 `.solid`) · 햄버거
+- `css/hero.css` — 첫 화면 · 십자 띠 · 흐르는 띠(`.marq`)
+- `css/content.css` — 덜어낸 것 · 품질 · 오트밀 · 손님/사용 장면 · 라인업 · 소재비교 · 사이즈
+- `css/faq-footer.css` — FAQ · CTA · 푸터
+- `css/responsive.css` — 900px 이하 · `.nav-links.open` 드로어
+- `js/nav.js`(드로어 · 앵커 · 네비 바탕) `js/faq.js` `js/reveal.js` `js/video.js`(라인업 영상)
 
 ## 토큰 절약 규칙 (디자인 변경 작업)
 
 1. **glove의 index.html은 열지 말 것.** 색/여백/폰트/그림자/반응형은 전부 `css/`에 있음.
    클래스명을 모르면 `grep -n "클래스명" <site>/css/*.css`로 파일부터 특정.
 2. **색·폰트 전역 변경은 `:root` 토큰만 수정.** glove는 `css/base.css`, main·hub는 `index.html` `<style>` 맨 위.
-3. `glove/index.html`은 base64 로고가 한 줄에 30KB씩 박혀 있음 →
-   **전체 Read 금지.** 필요하면 `sed -n 'A,Bp'`로 구간만.
+3. `glove/index.html`은 필요한 구간만 `sed -n 'A,Bp'`로.
 4. 마크업을 꼭 바꿔야 하면 `grep -n`으로 위치 찾고 Edit로 그 줄만.
 5. 검증은 `python -m http.server 8899` 후 `/main/index.html` 등으로 확인. rewrite 없이도
    상대경로라 그대로 동작 (hub는 `/hub/index.html`).

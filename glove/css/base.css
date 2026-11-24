@@ -1,18 +1,36 @@
-/* 디자인 토큰 · 리셋 · 타이포 기본 */
+/* 디자인 토큰 · 리셋 · 타이포 기본 — 2026-11 개편: 코발트 단색 + 큰 글씨 */
 :root{
-  --blue:#2B7FD4; --blue-dark:#1F63A8; --blue-deep:#12386B;
-  --ink:#1B1B1B; --body:#5A6570; --mist:#8A939C;
-  --paper:#FFFFFF; --film:#F5F8FB; --line:#E7ECF1; --line-blue:#CFE0F2;
-  --oat:#C69A2E;
+  --blue:#1747E6;          /* 메인 단색 — 첫 화면 · 품질 섹션 */
+  --ink:#0E0E10;           /* 검정 섹션 · 본문 글자 */
+  --paper:#FFFFFF;
+  --oat:#ECE8E1;           /* 오트밀 섹션 바탕 (상자 회색 계열) */
+  --yellow:#F2B705;        /* 오트밀 상자 띠 색 — CTA · 강조 */
+  --gray:#8B8F98;
+  --line:rgba(14,14,16,.14);
   --sans:'Pretendard Variable','Pretendard',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;
-  --maxw:1080px;
+  --pad:clamp(20px,4vw,56px);   /* 좌우 여백 — 섹션 공통 */
+  --sec:clamp(96px,11vw,150px); /* 섹션 위아래 여백 */
+  --ease:cubic-bezier(.2,.8,.2,1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
-body{background:var(--paper);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.75;font-weight:400;letter-spacing:-.01em;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.7;letter-spacing:-.02em;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 img{max-width:100%;height:auto;display:block;}
 a{color:inherit;text-decoration:none;}
-h1,h2,h3{color:var(--ink);letter-spacing:-.03em;font-weight:800;line-height:1.3;}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
-@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important;}}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;}
 
+/* 큰 글씨 공통 */
+.mega{font-weight:900;letter-spacing:-.065em;line-height:.98;}
+section{padding:var(--sec) var(--pad);scroll-margin-top:64px;}
+section h2{font-size:clamp(28px,3.4vw,48px);font-weight:800;letter-spacing:-.05em;line-height:1.2;margin-top:14px;text-wrap:balance;}
+.k{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--blue);}
+
+/* 스크롤 등장 — html.rvon(reveal.js)이 붙었을 때만 숨김 */
+html.rvon .rv{opacity:0;transform:translateY(36px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+html.rvon .rv.show{opacity:1;transform:none;}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition-duration:.01ms !important;}
+  html.rvon .rv{opacity:1;transform:none;}
+}
