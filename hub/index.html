@@ -103,7 +103,7 @@ if (mob) {
     .then(() => {
       // 두 라인 모두 잘리지 않고 칸 안에 통째로 보이게
       SteelLine.mount(document.getElementById('glRaw'), null, { view: { t: [6, 2, 4], size: 94, fx: 0.5, fy: 0.76 } });
-      const glove = GloveLine.mount(document.getElementById('glGlove'), { view: { t: [2.5, 1.8, 0.8], size: 31, fx: 0.5, fy: 0.7 } });
+      const glove = GloveLine.mount(document.getElementById('glGlove'), { view: { t: [1.2, 1.6, -0.4], size: 35, fx: 0.5, fy: 0.68 } });
       document.querySelector('.glove').addEventListener('mouseenter', () => glove.setSpeed(1.8));
       document.querySelector('.glove').addEventListener('mouseleave', () => glove.setSpeed(1));
     });
