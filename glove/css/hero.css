@@ -20,6 +20,5 @@
 /* 흐르는 띠 */
 .marq{background:var(--ink);color:#fff;overflow:hidden;white-space:nowrap;padding:20px 0;font-weight:800;font-size:clamp(17px,2vw,26px);letter-spacing:-.03em;}
 .marq div{display:inline-block;animation:mq 30s linear infinite;}
-.marq span{margin:0 26px;}
-.marq i{font-style:normal;color:var(--yellow);}
+.marq span{margin:0 40px;}
 @keyframes mq{to{transform:translateX(-50%);}}

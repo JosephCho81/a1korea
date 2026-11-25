@@ -27,7 +27,7 @@
 - `media/` — 영상(1080p, crf27) · 포스터 · `img/` 품목 참고 사진 (Pexels). 원본은 `samples/media/raw`(git 제외)
 
 ### glove/ (글러브트리 · 단일 랜딩, 2026-11-24 개편: 코발트 단색 + 큰 글씨)
-- 순서: 첫 화면(깨끗함은…) → 띠 → 덜어낸 것(`#minus`) → 품질 숫자(`#proof`) → 오트밀 → 손님 · 사용 장면(`#use`) → 라인업 · 소재비교(`#lineup`) → 사이즈 → FAQ → CTA(노랑) → 푸터
+- 순서: 첫 화면(깨끗함은…) → 띠 → 덜어낸 것(`#minus`) → 품질 숫자(`#proof`) → 오트밀 → 손님 · 사용 장면(`#use`) → 라인업 · 소재비교(`#lineup`) → 사이즈 → FAQ → CTA(노랑) → 납품 문의(`#contact`, 코발트 · 전화·문자·카톡) → 푸터. 네비 `.tel` 전화 버튼 · 모바일 하단 문의 바 `.dock`(js/nav.js)
 - 시안 A(색 라인업) · B(화보형)는 `samples/glove-a-color.html` `glove-b-editorial.html`에 보관
 - `css/base.css` — **디자인 토큰**(`--blue` `--yellow` `--oat` …) · 리셋 · `.mega` 큰 글씨 · `.rv` 등장
 - `css/nav.css` — 네비(첫 화면 위 투명 → 지나면 `.solid`) · 햄버거
@@ -35,7 +35,7 @@
 - `css/content.css` — 덜어낸 것 · 품질 · 오트밀 · 손님/사용 장면 · 라인업 · 소재비교 · 사이즈
 - `css/faq-footer.css` — FAQ · CTA · 푸터
 - `css/responsive.css` — 900px 이하 · `.nav-links.open` 드로어
-- `js/nav.js`(드로어 · 앵커 · 네비 바탕) `js/faq.js` `js/reveal.js` `js/video.js`(라인업 영상 — 0~3초 로고 인트로라 `data-start="4"`부터 재생 · 끝나면 4초로 반복)
+- `js/nav.js`(드로어 · 앵커 · 네비 바탕) `js/faq.js` `js/reveal.js` `js/video.js`(라인업 영상 — 전 기기 무음 자동재생 · 0~3초 로고 인트로라 `data-start="4"`부터 재생 · 끝나면 4초로 반복)
 
 ## 토큰 절약 규칙 (디자인 변경 작업)
 

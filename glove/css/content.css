@@ -43,10 +43,7 @@
 
 /* 라인업 — 큰 글씨 행, 올리면 그 장갑 색 */
 .lineup-media{position:relative;margin-top:44px;border-radius:8px;overflow:hidden;background:#000;}
-.lineup-media video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;cursor:pointer;}
-.lv-btn{position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);font-size:24px;transition:opacity .3s,transform .3s var(--ease);}
-.lv-btn:hover{transform:scale(1.06);}
-.lineup-media.playing .lv-btn{opacity:0;pointer-events:none;}
+.lineup-media video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;}
 .prods{margin-top:48px;}
 .prod{position:relative;display:grid;grid-template-columns:64px 1fr auto;align-items:center;gap:20px;border-top:2px solid var(--ink);padding:14px 0;transition:background .3s,color .3s,padding .35s var(--ease);}
 .prod:last-child{border-bottom:2px solid var(--ink);}

@@ -36,3 +36,15 @@
   .sizes{gap:12px;}
   .foot-top{flex-direction:column;align-items:flex-start;}
 }
+
+/* 납품 문의 — 모바일 */
+@media (max-width:900px){
+  .tel b{display:none;}
+  .tel{padding:8px 12px;font-size:13px;}
+  .biz-acts{grid-template-columns:1fr;}
+  .dock{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:8px;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;padding:8px;border-radius:16px;background:rgba(14,14,16,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transform:translateY(140%);transition:transform .4s var(--ease);}
+  .dock.on{transform:none;}
+  .dock a{display:flex;align-items:center;justify-content:center;padding:13px 0;border-radius:10px;color:#fff;font-size:15px;font-weight:800;background:rgba(255,255,255,.1);}
+  .dock a.kakao{background:#FEE500;color:#191919;}
+  footer{padding-bottom:110px;}
+}

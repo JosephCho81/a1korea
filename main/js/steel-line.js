@@ -599,7 +599,7 @@
     const v = new THREE.Vector3(), v2 = new THREE.Vector3(), clock = new THREE.Clock(), reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const phase = { bucket: 0, ladle: 0, chg: 0 };
     if (opts.view) steps[0] = opts.view; // 허브처럼 한 장면만 고정해서 보여줄 때
-    const cur = { tx: steps[0].t[0], ty: steps[0].t[1], tz: steps[0].t[2], size: steps[0].size, fx: 0.62, fy: 0.5 };
+    const cur = { tx: steps[0].t[0], ty: steps[0].t[1], tz: steps[0].t[2], size: steps[0].size, fx: steps[0].fx || 0.64, fy: steps[0].fy || 0.5 };
     let activeStep = 0, labelsOff = false;
     function focus(i) {
       activeStep = i; const s = steps[i], m = !opts.view && innerWidth < 760;

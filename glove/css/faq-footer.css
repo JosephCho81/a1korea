@@ -24,3 +24,18 @@ footer{background:var(--ink);color:#A7ABB3;padding:48px var(--pad) 40px;font-siz
 .foot-nav{display:flex;gap:22px;flex-wrap:wrap;}
 .foot-nav a:hover{color:#fff;}
 .foot-meta{margin-top:22px;line-height:1.9;}
+
+/* 대량구매 · 납품 문의 (CTA와 푸터 사이) · 모바일 하단 문의 바(.dock) */
+.biz{background:var(--blue);color:#fff;padding:clamp(64px,7vw,104px) var(--pad);}
+.biz-k{color:#fff;font-size:13px;font-weight:800;letter-spacing:.14em;opacity:.75;}
+.biz h2{font-size:clamp(30px,3.6vw,52px);font-weight:900;letter-spacing:-.05em;line-height:1.05;margin:14px 0 0;}
+.biz .lead{margin-top:14px;font-size:clamp(15px,1.2vw,17px);opacity:.85;}
+.biz-num{display:block;margin-top:36px;font-size:clamp(34px,5.4vw,76px);font-weight:900;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;}
+.biz-hours{margin-top:16px;font-size:15px;font-weight:600;opacity:.75;}
+.biz-acts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:32px;max-width:760px;}
+.biz-acts a{display:flex;flex-direction:column;gap:2px;padding:16px 20px;border-radius:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);transition:background .25s;}
+.biz-acts a:hover{background:rgba(255,255,255,.2);}
+.biz-acts b{font-size:17px;font-weight:800;}
+.biz-acts span{font-size:14px;opacity:.7;}
+.biz-acts a.kakao{background:#FEE500;color:#191919;border-color:#FEE500;}
+.dock{display:none;}

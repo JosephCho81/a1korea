@@ -13,3 +13,6 @@ nav.solid{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-ba
 nav.solid .buy{background:var(--ink);border-color:var(--ink);color:#fff;}
 .hamb{display:none;width:40px;height:40px;flex-direction:column;justify-content:center;align-items:center;gap:5px;}
 .hamb span{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;}
+/* 납품 문의 전화 버튼 */
+.tel{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:99px;background:var(--yellow);color:var(--ink);font-size:14px;font-weight:800;white-space:nowrap;}
+.tel small{font-size:12px;font-weight:700;opacity:.7;}

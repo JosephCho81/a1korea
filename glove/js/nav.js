@@ -58,3 +58,8 @@ document.querySelectorAll('a[href^="#"]').forEach(function (a) {
 });
 
 syncNav();
+
+/* 모바일 하단 문의 바 — 첫 화면을 지나면 보이고, 문의 섹션이 보이면 숨김 */
+(function(){var d=document.getElementById('dock'),h=document.getElementById('top'),c=document.getElementById('contact');
+function f(){var r=c.getBoundingClientRect();d.classList.toggle('on',h.getBoundingClientRect().bottom<0&&r.top>innerHeight*0.6);}
+addEventListener('scroll',f,{passive:true});f();})();
