@@ -39,3 +39,8 @@ footer{background:var(--ink);color:#A7ABB3;padding:48px var(--pad) 40px;font-siz
 .biz-acts span{font-size:14px;opacity:.7;}
 .biz-acts a.kakao{background:#FEE500;color:#191919;border-color:#FEE500;}
 .dock{display:none;}
+/* PC(마우스)는 전화·문자를 걸 수 없음 → 버튼 숨기고 번호는 보기만 */
+@media (hover:hover) and (pointer:fine){
+  .biz-acts a[href^="tel:"],.biz-acts a[href^="sms:"]{display:none;}
+  .biz-num,.tel{pointer-events:none;}
+}
