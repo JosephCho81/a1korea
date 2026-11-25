@@ -15,6 +15,7 @@
 - `index.html` — CSS·JS 인라인 (토큰은 `<style>` 맨 위 `:root`). 왼쪽 원자재 / 오른쪽 글러브 좌우 분할(모바일은 위아래), 마우스 올린 쪽이 넓어짐
 - 제강 3D는 사본 없이 `/main/js/steel-line.js`를 직접 불러옴. `mount(el, null, { view })`로 라벨 없이 한 장면 고정
 - `js/glove-line.js` — 니트릴 딥핑 라인(2026-11-25 상세화: 틀 세척 4조 → 응고제 → 건조 → 니트릴 2회 → 겔화 → 예비 세척 → 비딩 → 경화 오븐 → 후 세척 → 공기 탈형 → 검사 · 자동 포장 → 팔레트, 뒤쪽 배합실 · 배관 랙). 담금조 위치는 `DIP` 배열, 틀 색 변화는 `coatAt()`. **samples/js에 같은 사본** — 시안은 `samples/glove-3d-compare.html`. 상자 디자인은 `boxMaterials()` (Glovetree 파랑 · 검정 · 오트밀, `glove/img/box-*.jpg` 실물 기준)
+  - 2026-11-25: 도는 틀 수 `NF`(PC 22 · 모바일 18 — 많아 보여 줄임, 더 줄이면 담금조가 자주 빔). 지게차는 빈 채로 들어가 포장 팔레트(`cargo`)를 들고 후진 → 다시 내려놓는 반복, 동작 구간은 `FK_KEYS`
 - `img/a1-logo.png` — 로고
 - 경로는 절대경로(`/hub/js/...`)라 file://로는 안 열림 → 확인은 http 서버나 `samples/hub-lr2.html`(상대경로 사본)
 
@@ -46,7 +47,7 @@
 2. **색·폰트 전역 변경은 `:root` 토큰만 수정.** glove는 `css/base.css`, main은 `css/style.css` 맨 위, hub는 `index.html` `<style>` 맨 위.
 3. `glove/index.html`은 필요한 구간만 `sed -n 'A,Bp'`로.
 4. 마크업을 꼭 바꿔야 하면 `grep -n`으로 위치 찾고 Edit로 그 줄만.
-5. **3D 파일(`main/js/steel-line.js` 777줄 · `hub/js/glove-line.js` 466줄)은 통째로 읽지 말 것.**
+5. **3D 파일(`main/js/steel-line.js` 777줄 · `hub/js/glove-line.js` 504줄)은 통째로 읽지 말 것.**
    `grep -n '// ═\|// ──' <파일>`로 구역 위치부터 찾고 Read offset/limit로 그 구역만.
 6. 검증은 `python -m http.server 8899` 후 `/main/index.html` 등으로 확인. rewrite 없이도
    상대경로라 그대로 동작 (hub는 `/hub/index.html`).

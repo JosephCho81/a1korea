@@ -303,12 +303,47 @@
       }
     }
     pallet(2.4, CVZ, 6, ['blue']); pallet(0.6, CVZ, 5, ['black', 'blue']); pallet(-1.2, CVZ, 6, ['oat']);
-    box(1.62, 1.4, 1.22, 'wrap', -3.0, 0.86, CVZ);
-    // 지게차
-    box(0.9, 0.5, 0.65, 'yellow', -5.0, 0.45, 3.1); box(0.5, 0.5, 0.6, 'yellow', -5.2, 0.95, 3.1); box(0.52, 0.04, 0.62, 'black', -5.2, 1.5, 3.1);
-    [[-0.55, 0.3], [-0.55, -0.3], [0.55, 0.3], [0.55, -0.3]].forEach(([a, b]) => box(0.04, 0.6, 0.04, 'black', -5.2 + a * 0.45, 1.2, 3.1 + b));
-    box(0.08, 1.6, 0.5, 'steelDk', -4.5, 0.8, 3.1); box(0.6, 0.04, 0.1, 'steelDk', -4.2, 0.12, 2.95); box(0.6, 0.04, 0.1, 'steelDk', -4.2, 0.12, 3.25);
-    [[-5.35, 2.78], [-5.35, 3.42], [-4.7, 2.78], [-4.7, 3.42]].forEach(([x, z]) => cyl(0.14, 0.1, 'rubber', x, 0.14, z, PI / 2, 0, 0, 12));
+    // 지게차 · 운반 팔레트 — 빈 지게차가 들어가 포장 팔레트를 들고 후진, 다시 들어가 내려놓고 빈 채로 나온다 (loop의 fkAt)
+    const FK_X = -5.0, CARGO_X = -3.0;
+    const cargo = new THREE.Group(); cargo.position.set(CARGO_X, 0, CVZ); scene.add(cargo);
+    { const m = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.14, 1.2), getMat('pallet')); m.position.y = 0.07; m.castShadow = m.receiveShadow = true; cargo.add(m); }
+    ['blue', 'oat'].forEach((v, vi) => {
+      const pos = [];
+      for (let l = 0; l < 5; l++) for (let i = 0; i < 2; i++) for (let j = 0; j < 3; j++) if ((l + j) % 2 === vi) pos.push([-0.33 + i * 0.66, 0.14 + 0.085 + l * 0.175, -0.36 + j * 0.36]);
+      const im = new THREE.InstancedMesh(boxGeo, boxMats[v], pos.length);
+      pos.forEach((q, i) => { _o.position.set(...q); _o.rotation.set(0, 0, 0); _o.scale.set(1, 1, 1); _o.updateMatrix(); im.setMatrixAt(i, _o.matrix); });
+      im.castShadow = im.receiveShadow = true; cargo.add(im);
+    });
+    const forklift = new THREE.Group(), forks = new THREE.Group(), fkWheels = [];
+    forklift.position.set(FK_X, 0, CVZ); forklift.add(forks); scene.add(forklift);
+    const fk = (g, k, x, y, z, parent = forklift) => { const m = new THREE.Mesh(g, getMat(k)); m.position.set(x, y, z); m.castShadow = true; m.receiveShadow = true; parent.add(m); return m; };
+    const fkBox = (w, h, d, k, x, y, z, parent) => fk(new THREE.BoxGeometry(w, h, d), k, x, y, z, parent);
+    fkBox(0.9, 0.5, 0.65, 'yellow', 0, 0.45, 0); fkBox(0.5, 0.5, 0.6, 'yellow', -0.2, 0.95, 0); fkBox(0.52, 0.04, 0.62, 'black', -0.2, 1.5, 0);
+    [[-0.55, 0.3], [-0.55, -0.3], [0.55, 0.3], [0.55, -0.3]].forEach(([a, b]) => fkBox(0.04, 0.6, 0.04, 'black', -0.2 + a * 0.45, 1.2, b));
+    fkBox(0.08, 1.6, 0.5, 'steelDk', 0.5, 0.8, 0);
+    fkBox(0.06, 0.4, 0.46, 'steelDk', 0.57, 0.3, 0, forks); fkBox(0.9, 0.04, 0.1, 'steelDk', 1.0, 0.1, -0.2, forks); fkBox(0.9, 0.04, 0.1, 'steelDk', 1.0, 0.1, 0.2, forks);
+    [[-0.35, -0.32], [-0.35, 0.32], [0.3, -0.32], [0.3, 0.32]].forEach(([x, z]) => { const g = new THREE.CylinderGeometry(0.14, 0.14, 0.1, 12); g.rotateX(PI / 2); fkWheels.push(fk(g, 'rubber', x, 0.14, z)); });
+    // 구간: [초, 지게차 x(FK_X 기준), 포크 높이, 팔레트를 들고 있나]. 각 구간 끝 값으로 보간
+    const FK_IN = (CARGO_X - 0.75) - (FK_X + 0.6), FK_OUT = -2.0, LIFT = 0.22;
+    const FK_KEYS = [
+      [1.5, FK_OUT, 0, 0],  // 빈 채로 대기
+      [3.0, FK_IN, 0, 0],   // 팔레트 밑으로 진입
+      [1.0, FK_IN, LIFT, 1], // 들어 올림
+      [3.2, FK_OUT, LIFT, 1], // 들고 후진
+      [1.5, FK_OUT, LIFT, 1],
+      [3.2, FK_IN, LIFT, 1], // 다시 진입
+      [1.0, FK_IN, 0, 1],    // 내려놓음
+      [3.0, FK_OUT, 0, 0]    // 빈 채로 후진
+    ];
+    const FK_T = FK_KEYS.reduce((t, k) => t + k[0], 0);
+    function fkAt(t) {
+      let r = fr(t / FK_T) * FK_T, prev = FK_KEYS[FK_KEYS.length - 1];
+      for (const k of FK_KEYS) {
+        if (r < k[0]) { const u = ss(r / k[0]); return { x: prev[1] + (k[1] - prev[1]) * u, lift: prev[2] + (k[2] - prev[2]) * u, carry: k[3] }; }
+        r -= k[0]; prev = k;
+      }
+      return { x: prev[1], lift: prev[2], carry: prev[3] };
+    }
 
     Object.keys(lists).forEach(k => {
       const mesh = new THREE.Mesh(THREE.BufferGeometryUtils.mergeBufferGeometries(lists[k]), getMat(k));
@@ -327,16 +362,16 @@
       parts.forEach(g => Object.keys(g.attributes).forEach(a => { if (a !== 'position' && a !== 'normal' && a !== 'uv') g.deleteAttribute(a); }));
       const g = THREE.BufferGeometryUtils.mergeBufferGeometries(parts); g.scale(1.5, 1.5, 1.5); return g;
     }
-    const LOOP = 2 * (XR - XL) + 2 * PI * R, NF = lowPower ? 40 : 52;
+    const LOOP = 2 * (XR - XL) + 2 * PI * R, NF = lowPower ? 18 : 22;
     const formers = new THREE.InstancedMesh(handGeo(true), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.4, metalness: 0.05, envMapIntensity: 0.45 }), NF);
     formers.castShadow = true; scene.add(formers);
     const ceramic = new THREE.Color(0xEAE6DF), wet = new THREE.Color(0xF4F1EA), coag = new THREE.Color(0xDCDFD8), nitLt = new THREE.Color(0x6E95E6), nitrile = new THREE.Color(0x2F6BE0), cured = new THREE.Color(0x3A68C9);
     // 날아가는 장갑 + 통 안 · 검사대 위 장갑
     const NG = 1, flying = new THREE.InstancedMesh(handGeo(false), new THREE.MeshStandardMaterial({ color: 0x3D6FD6, roughness: 0.5, envMapIntensity: 0.4 }), NG); flying.castShadow = true; scene.add(flying);
-    const pileN = 34, pile = new THREE.InstancedMesh(handGeo(false), new THREE.MeshStandardMaterial({ color: 0x3D6FD6, roughness: 0.55, envMapIntensity: 0.4 }), pileN);
+    const pileN = 14, pile = new THREE.InstancedMesh(handGeo(false), new THREE.MeshStandardMaterial({ color: 0x3D6FD6, roughness: 0.55, envMapIntensity: 0.4 }), pileN);
     for (let i = 0; i < pileN; i++) {
-      if (i < 26) { _o.position.set(11.75 + hash(i) * 0.9, 0.84 + hash(i + 7) * 0.08, 1.6 + hash(i + 3) * 0.6); _o.rotation.set(PI / 2 + (hash(i + 9) - 0.5) * 0.6, hash(i + 11) * PI * 2, (hash(i + 5) - 0.5) * 0.8); _o.scale.set(0.5, 0.5, 0.2); }
-      else { const j = i - 26; _o.position.set(9.85 + (j % 4) * 0.3, 0.97, 2.5 + (j >> 2) * 0.4); _o.rotation.set(-PI / 2, 0, PI / 2 + (hash(j) - 0.5) * 0.3); _o.scale.set(0.45, 0.45, 0.15); }
+      if (i < 10) { _o.position.set(11.75 + hash(i) * 0.9, 0.84 + hash(i + 7) * 0.08, 1.6 + hash(i + 3) * 0.6); _o.rotation.set(PI / 2 + (hash(i + 9) - 0.5) * 0.6, hash(i + 11) * PI * 2, (hash(i + 5) - 0.5) * 0.8); _o.scale.set(0.5, 0.5, 0.2); }
+      else { const j = i - 10; _o.position.set(9.85 + (j % 4) * 0.3, 0.97, 2.5 + (j >> 2) * 0.4); _o.rotation.set(-PI / 2, 0, PI / 2 + (hash(j) - 0.5) * 0.3); _o.scale.set(0.45, 0.45, 0.15); }
       _o.updateMatrix(); pile.setMatrixAt(i, _o.matrix);
     }
     pile.castShadow = true; scene.add(pile);
@@ -428,6 +463,9 @@
       flying.instanceMatrix.needsUpdate = true;
       for (let i = 0; i < NBX; i++) { const u = fr(tt * 0.1 + i / NBX); _o.position.set(CV1 - u * (CV1 - CV0 - 0.3), 1.0, CVZ); _o.rotation.set(0, 0, 0); _o.scale.set(1, 1, 1); _o.updateMatrix(); boxes.setMatrixAt(i, _o.matrix); }
       boxes.instanceMatrix.needsUpdate = true;
+      const fs = fkAt(tt);
+      forklift.position.x = FK_X + fs.x; forks.position.y = fs.lift; fkWheels.forEach(w => { w.rotation.z = -fs.x / 0.14; });
+      cargo.position.set(CARGO_X + (fs.carry ? fs.x - FK_IN : 0), fs.carry ? fs.lift : 0, CVZ);
 
       rollers.forEach((r, i) => { r.rotation.y = tt * (i % 2 ? -6 : 6); });
       agitators.forEach((a, i) => { a.rotation.y = tt * (2 + i * 0.4); });
