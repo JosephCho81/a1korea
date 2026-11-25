@@ -17,3 +17,10 @@ _deck/
 일반 알루니늄 탈산제.png
 철강제품.png
 페로실리콘.png
+
+# 작업 폴더 · 원본 소재 (배포 안 함, 코드 검색에서도 제외)
+samples/
+character/
+3d/
+instagram/
+contact.png

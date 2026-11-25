@@ -99,7 +99,7 @@ if (mob) {
   const T = 'https://cdn.jsdelivr.net/npm/three@0.147.0/';
   loadScript(T + 'build/three.min.js')
     .then(() => Promise.all([T + 'examples/js/utils/BufferGeometryUtils.js', T + 'examples/js/environments/RoomEnvironment.js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'].map(loadScript)))
-    .then(() => Promise.all(['/hub/js/steel-line.js', '/hub/js/glove-line.js'].map(loadScript)))
+    .then(() => Promise.all(['/main/js/steel-line.js', '/hub/js/glove-line.js'].map(loadScript)))
     .then(() => {
       // 두 라인 모두 잘리지 않고 칸 안에 통째로 보이게
       SteelLine.mount(document.getElementById('glRaw'), null, { view: { t: [6, 2, 4], size: 94, fx: 0.5, fy: 0.76 } });
