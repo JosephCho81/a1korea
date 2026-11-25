@@ -612,11 +612,19 @@
       if (cue && !reduce) { const [k, T, want] = cue, now = ((clock.getElapsedTime() + phase[k]) % T) / T; phase[k] += ((want - now + 1) % 1) * T; }
     }
 
+    function project() {
+      const w = container.clientWidth, h = container.clientHeight, W = cur.size * w / h;
+      cam.left = -cur.fx * W; cam.right = (1 - cur.fx) * W; cam.top = cur.fy * cur.size; cam.bottom = -(1 - cur.fy) * cur.size;
+      cam.updateProjectionMatrix();
+    }
+    // setSize는 캔버스를 지운다 → 칸 크기가 바뀌는 동안(허브 hover) 빈 프레임이 깜빡이지 않게 바로 다시 그림
     function resize() {
       const w = container.clientWidth, h = container.clientHeight;
       renderer.setSize(w, h, false);
       renderer.domElement.style.width = w + 'px'; renderer.domElement.style.height = h + 'px';
+      if (started) { project(); renderer.render(scene, cam); }
     }
+    let started = false;
     addEventListener('resize', resize); resize();
     if (window.ResizeObserver) new ResizeObserver(resize).observe(container);
 
@@ -643,9 +651,8 @@
       const t = reduce ? 4 : clock.getElapsedTime();
 
       // 카메라
-      const w = container.clientWidth, h = container.clientHeight, asp = w / h;
-      const W = cur.size * asp; cam.left = -cur.fx * W; cam.right = (1 - cur.fx) * W; cam.top = cur.fy * cur.size; cam.bottom = -(1 - cur.fy) * cur.size;
-      cam.updateProjectionMatrix();
+      const w = container.clientWidth, h = container.clientHeight;
+      project();
       target.set(cur.tx, cur.ty, cur.tz);
       cam.position.copy(target).addScaledVector(camDir, 90); cam.lookAt(target);
       const zoomK = Math.min(2.2, Math.max(0.7, 22 / cur.size));
@@ -747,7 +754,7 @@
       }
       molds.instanceMatrix.needsUpdate = true; alIngots.instanceMatrix.needsUpdate = true; alIngots.instanceColor.needsUpdate = true;
 
-      renderer.render(scene, cam);
+      renderer.render(scene, cam); started = true;
 
       // 라벨 투영
       const mob = w < 760;

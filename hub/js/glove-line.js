@@ -217,7 +217,10 @@
 
     const P = new THREE.Vector3(), cur = Object.assign({ t: [0, 2, 0], size: 10, fx: 0.5, fy: 0.5 }, opts.view || {});
     let visible = true; new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(container);
-    function resize() { const w = container.clientWidth, h = container.clientHeight; renderer.setSize(w, h, false); renderer.domElement.style.width = w + 'px'; renderer.domElement.style.height = h + 'px'; }
+    function project() { const w = container.clientWidth, h = container.clientHeight, W = cur.size * w / h; cam.left = -cur.fx * W; cam.right = (1 - cur.fx) * W; cam.top = cur.fy * cur.size; cam.bottom = -(1 - cur.fy) * cur.size; cam.updateProjectionMatrix(); }
+    // setSize는 캔버스를 지운다 → 칸 크기가 바뀌는 동안 빈 프레임이 깜빡이지 않게 바로 다시 그림
+    let started = false;
+    function resize() { const w = container.clientWidth, h = container.clientHeight; renderer.setSize(w, h, false); renderer.domElement.style.width = w + 'px'; renderer.domElement.style.height = h + 'px'; if (started) { project(); renderer.render(scene, cam); } }
     addEventListener('resize', resize); resize(); if (window.ResizeObserver) new ResizeObserver(resize).observe(container);
     const clock = new THREE.Clock(), reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, tmpM = new THREE.Matrix4();
     const state = { speed: 1 }; let tt = 0, last = 0;
@@ -227,9 +230,8 @@
       if (!visible) return;
       const now = clock.getElapsedTime(), dt = Math.min(0.1, now - last); last = now;
       tt += reduce ? 0 : dt * state.speed;
-      const w = container.clientWidth, h = container.clientHeight, asp = w / h;
       const drift = opts.drift ? Math.sin(tt * 0.06) * opts.drift : 0;
-      const W = cur.size * asp; cam.left = -cur.fx * W; cam.right = (1 - cur.fx) * W; cam.top = cur.fy * cur.size; cam.bottom = -(1 - cur.fy) * cur.size; cam.updateProjectionMatrix();
+      project();
       const tg = new THREE.Vector3(cur.t[0] + drift, cur.t[1], cur.t[2]); cam.position.copy(tg).addScaledVector(camDir, 60); cam.lookAt(tg);
 
       const base = tt * 0.9;
@@ -252,7 +254,7 @@
       boxes.instanceMatrix.needsUpdate = true;
       ovenGlow.emissiveIntensity = 0.85 + Math.sin(tt * 3) * 0.08;
 
-      renderer.render(scene, cam);
+      renderer.render(scene, cam); started = true;
     })();
 
     return { setSpeed(v) { gsap.to(state, { speed: v, duration: 0.6 }); } };

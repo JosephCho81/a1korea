@@ -18,29 +18,27 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .logo img{height:32px;filter:brightness(0) invert(1) opacity(.9)}
 .header small{font-size:12px;color:var(--fog);font-weight:600}
 
-.stage{position:fixed;inset:0;display:flex;flex-direction:column}
+.stage{position:fixed;inset:0;display:flex;flex-direction:row}
 .panel{position:relative;flex:1 1 0;min-height:0;overflow:hidden;cursor:pointer;transition:flex-grow .8s cubic-bezier(.77,0,.18,1)}
-@media (hover:hover) and (min-width:769px){
-  .stage:has(.raw:hover) .raw,.stage:has(.glove:hover) .glove{flex-grow:1.35}
-  .stage:has(.raw:hover) .glove,.stage:has(.glove:hover) .raw{flex-grow:.65}
-}
-.panel .gl{position:absolute;inset:0;transition:filter .6s,opacity .6s}
-.raw .gl{background:radial-gradient(ellipse 80% 70% at 55% 45%,#1E1A17,var(--night) 75%)}
-.glove .gl{background:radial-gradient(ellipse 80% 70% at 45% 45%,#151B26,var(--night) 75%)}
-.stage:has(.panel:hover) .panel:not(:hover) .gl{filter:brightness(.55) saturate(.6)}
-.panel::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(11,13,16,.95) 0,rgba(11,13,16,.7) 28%,rgba(11,13,16,0) 50%)}
-.divider{position:fixed;left:0;right:0;top:50%;height:1px;background:rgba(255,255,255,.12);z-index:10;pointer-events:none;transition:top .8s cubic-bezier(.77,0,.18,1)}
-@media (hover:hover) and (min-width:769px){body:has(.raw:hover) .divider{top:67.5%}body:has(.glove:hover) .divider{top:32.5%}}
 
-.content{position:absolute;left:40px;top:50%;transform:translateY(-50%);max-width:480px;z-index:2}
-.raw .content{top:calc(50% + 24px)}
+.panel .gl{position:absolute;inset:0;transition:filter .6s,opacity .6s}
+.raw .gl{background:radial-gradient(ellipse 90% 70% at 50% 64%,#4A2712,#1F120A 70%)}
+.glove .gl{background:radial-gradient(ellipse 90% 70% at 50% 64%,#14306A,#0A1530 70%)}
+.stage:has(.panel:hover) .panel:not(:hover) .gl{filter:brightness(.55) saturate(.6)}
+.panel::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none}
+.raw::after{background:linear-gradient(180deg,rgba(31,18,10,.9) 0,rgba(31,18,10,.5) 30%,rgba(31,18,10,0) 44%)}
+.glove::after{background:linear-gradient(180deg,rgba(10,21,48,.9) 0,rgba(10,21,48,.5) 30%,rgba(10,21,48,0) 44%)}
+.divider{position:fixed;top:0;bottom:0;left:50%;width:6px;margin-left:-3px;background:var(--night);z-index:10;pointer-events:none;transition:left .8s cubic-bezier(.77,0,.18,1)}
+
+
+.content{position:absolute;left:40px;right:40px;top:104px;max-width:480px;z-index:2}
 .tag{font-size:13px;font-weight:700;margin-bottom:14px}
 .raw .tag{color:var(--ember)}.glove .tag{color:var(--cobalt)}
 h2{font-size:clamp(32px,3.6vw,56px);font-weight:800;letter-spacing:-.045em;line-height:1.1}
-.more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.25,.46,.45,.94)}
+.more{display:grid;grid-template-rows:1fr}
 .more > div{overflow:hidden}
 .panel:hover .more,.panel:focus-within .more{grid-template-rows:1fr}
-.sub{margin-top:16px;font-size:15px;line-height:1.7;color:var(--mist);max-width:420px}
+.sub{margin-top:16px;font-size:15px;line-height:1.7;color:var(--mist);max-width:420px;max-height:6em;transition:opacity .4s,max-height .6s,margin .6s}
 .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .enter{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;font-size:14px;font-weight:700;border-radius:2px}
 .raw .enter{background:var(--ember);color:#160800}.glove .enter{background:var(--cobalt);color:#050b1a}
@@ -54,7 +52,8 @@ h2{font-size:clamp(32px,3.6vw,56px);font-weight:800;letter-spacing:-.045em;line-
   .stage{flex-direction:column}
   .panel::after{background:linear-gradient(0deg,rgba(11,13,16,.96) 0,rgba(11,13,16,.75) 30%,rgba(11,13,16,0) 58%)}
   .header{padding:18px 20px}
-  .content,.raw .content{left:20px;right:20px;top:auto;bottom:22px;transform:none}
+  .content{left:20px;right:20px;top:auto;bottom:22px}
+  .divider{left:0;right:0;width:auto;top:50%;bottom:auto;height:6px;margin:-3px 0 0}
   h2{font-size:clamp(26px,7.4vw,38px)}
   .more{grid-template-rows:1fr}.sub{display:none}.btns{margin-top:14px}
 }
@@ -102,10 +101,9 @@ if (mob) {
     .then(() => Promise.all([T + 'examples/js/utils/BufferGeometryUtils.js', T + 'examples/js/environments/RoomEnvironment.js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'].map(loadScript)))
     .then(() => Promise.all(['/hub/js/steel-line.js', '/hub/js/glove-line.js'].map(loadScript)))
     .then(() => {
-      // 원자재: 원료 야적 → 전기로 → LF → 집진이 가로 띠에 들어오게
-      SteelLine.mount(document.getElementById('glRaw'), null, { view: { t: [-8, 3.5, -2], size: 15, fx: 0.62, fy: 0.5 } });
-      // 글러브: 응고제 → 니트릴 → 경화 오븐 → 탈형 → 포장까지 한 줄로
-      const glove = GloveLine.mount(document.getElementById('glGlove'), { view: { t: [2.5, 1.8, 0.8], size: 9, fx: 0.6, fy: 0.42 } });
+      // 두 라인 모두 잘리지 않고 칸 안에 통째로 보이게
+      SteelLine.mount(document.getElementById('glRaw'), null, { view: { t: [6, 2, 4], size: 94, fx: 0.5, fy: 0.76 } });
+      const glove = GloveLine.mount(document.getElementById('glGlove'), { view: { t: [2.5, 1.8, 0.8], size: 31, fx: 0.5, fy: 0.7 } });
       document.querySelector('.glove').addEventListener('mouseenter', () => glove.setSpeed(1.8));
       document.querySelector('.glove').addEventListener('mouseleave', () => glove.setSpeed(1));
     });
